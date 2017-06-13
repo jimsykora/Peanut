@@ -4,22 +4,15 @@ package org.usfirst.frc.team2839.robot;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team2839.robot.commands.AutonomousCommand;
-//import org.usfirst.frc.team2839.robot.subsystems.Dashboard;
 import org.usfirst.frc.team2839.robot.subsystems.Drivetrain;
+import org.usfirst.frc.team2839.robot.subsystems.DrivetrainAnglePID;
 import org.usfirst.frc.team2839.robot.subsystems.DrivetrainDistancePID;
 import org.usfirst.frc.team2839.robot.subsystems.NavXMicro;
-//import org.usfirst.frc.team2839.robot.subsystems.Dashboard;
-//import org.usfirst.frc.team2839.robot.subsystems.NavXMicro;
-//import org.usfirst.frc.team2839.robot.subsystems.Vision;
-//import org.usfirst.frc.team2839.robot.subsystems.NavXMicro;
-//import org.usfirst.frc.team2839.robot.subsystems.Shooter;
-//import org.usfirst.frc.team2839.robot.subsystems.Vision;
 import org.usfirst.frc.team2839.robot.subsystems.Telemetry;
 import org.usfirst.frc.team2839.robot.subsystems.Vision;
 
@@ -38,6 +31,7 @@ public class Robot extends IterativeRobot {
 	public static Telemetry telemetry; //Smart Dashboard & OI must be at the end
 	public static OI oi;
 	public static DrivetrainDistancePID drivetrainDistancePID;
+	public static DrivetrainAnglePID drivetrainAnglePID;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -52,6 +46,7 @@ public class Robot extends IterativeRobot {
 		navXMicro = new NavXMicro();
 		vision = new Vision();
 		drivetrainDistancePID = new DrivetrainDistancePID();
+		drivetrainAnglePID = new DrivetrainAnglePID();
 //		
 //		chooser.addDefault("Default Auto", new AutonomousCommand());    /////////////
 		//chooser.addObject("My Auto", new MyAutoCommand());

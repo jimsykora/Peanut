@@ -11,6 +11,9 @@ public class AutonomousCommand extends CommandGroup {
 	public double distance() {
 		return RobotPreferences.autoDistance();
 	}
+	public double angle() {
+		return RobotPreferences.autoAngle();
+	}
 
     public AutonomousCommand() {
         // Add Commands here:
@@ -29,6 +32,9 @@ public class AutonomousCommand extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	
+    	addSequential(new DriveDistance(distance()));
+    	addSequential(new TurnAngle(angle()));
     	addSequential(new DriveDistance(distance()));
     }
 }

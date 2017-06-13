@@ -8,14 +8,14 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
 /**
  *
  */
-public class DrivetrainDistancePID extends PIDSubsystem {
+public class DrivetrainAnglePID extends PIDSubsystem {
 	double output = 0.0;
 	boolean outputValid = false;
 	int targetCounter = 0;  //remove later if/when PID loop gets tuned properly. its used to delay turning off PID loop while in motion
 	double tolerance = 0.0;
-
+	
     // Initialize your subsystem here
-    public DrivetrainDistancePID() {
+    public DrivetrainAnglePID() {
         // Use these to get going:
         // setSetpoint() -  Sets where the PID controller should move the system
         //                  to
@@ -23,15 +23,15 @@ public class DrivetrainDistancePID extends PIDSubsystem {
     	super(0,0,0);
     	this.setSetpoint(0.0);
     	}
-
+    
     public  void enable()  {
-    	this.getPIDController().setPID(RobotPreferences.driveP(), RobotPreferences.driveI(), RobotPreferences.driveD());
-    	double maxSpeed = RobotPreferences.driveMaxSpeed();
+    	this.getPIDController().setPID(RobotPreferences.angleP(), RobotPreferences.angleI(), RobotPreferences.angleD());
+    	double maxSpeed = RobotPreferences.angleMaxSpeed();
     	this.setOutputRange(-maxSpeed, maxSpeed);
     	outputValid = false;
     	super.enable();
     }
-    
+
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
@@ -41,7 +41,7 @@ public class DrivetrainDistancePID extends PIDSubsystem {
         // Return your input value for the PID loop
         // e.g. a sensor, like a potentiometer:
         // yourPot.getAverageVoltage() / kYourMaxVoltage;
-        return Robot.drivetrain.getAvgEncDistance();
+        return Robot.drivetrain.getLEncoderAngle();
     }
 
     protected void usePIDOutput(double output) {
@@ -60,7 +60,7 @@ public class DrivetrainDistancePID extends PIDSubsystem {
     	this.tolerance = tolerance;
     }
     public boolean onRawTargrt() {
-    	if(Math.abs(getPIDController().getSetpoint() - Robot.drivetrain.getAvgEncDistance()) < tolerance) {
+    	if(Math.abs(getPIDController().getSetpoint() - Robot.drivetrain.getLEncoderAngle()) < tolerance) {
     		targetCounter = targetCounter +1;
     	}
     	else {

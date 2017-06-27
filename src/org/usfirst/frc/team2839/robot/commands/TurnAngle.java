@@ -29,7 +29,7 @@ public class TurnAngle extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drivetrain.arcadeDrive(Robot.drivetrain.getAvgEncDistance()*RobotPreferences.autoCorrectAngle(),Robot.drivetrainAnglePID.getOutput());
+    	Robot.drivetrain.arcadeDrive(Robot.drivetrain.getDifRate()*RobotPreferences.autoCorrectAngle(),Robot.drivetrainAnglePID.getOutput());
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -41,7 +41,7 @@ public class DrivetrainAnglePID extends PIDSubsystem {
         // Return your input value for the PID loop
         // e.g. a sensor, like a potentiometer:
         // yourPot.getAverageVoltage() / kYourMaxVoltage;
-        return Robot.drivetrain.getLEncoderAngle();
+        return Robot.drivetrain.getAvgEncAngle();
     }
 
     protected void usePIDOutput(double output) {
@@ -60,7 +60,7 @@ public class DrivetrainAnglePID extends PIDSubsystem {
     	this.tolerance = tolerance;
     }
     public boolean onRawTargrt() {
-    	if(Math.abs(getPIDController().getSetpoint() - Robot.drivetrain.getLEncoderAngle()) < tolerance) {
+    	if(Math.abs(getPIDController().getSetpoint() - Robot.drivetrain.getAvgEncAngle()) < tolerance) {
     		targetCounter = targetCounter +1;
     	}
     	else {

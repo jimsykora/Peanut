@@ -61,6 +61,9 @@ public class Drivetrain extends Subsystem {
 	public double getREncoderRate(){//this method returns somrthing so we define it as double, if void it would not return anything
 		return RQEncoder.getRate();
 	}
+	public double getDifRate() {
+		return ((-getLEncoderRate()-getREncoderRate()));
+	}
 	
 	public double getAvgEncDistance() {
 		return ((getLEncoderDistance() +getREncoderDistance())/2);
@@ -70,6 +73,12 @@ public class Drivetrain extends Subsystem {
 	}
 	public double getLEncoderAngle(){//this method returns somrthing so we define it as double, if void it would not return anything
 		return (-getLEncoderDistance() /(16.38*3.14159)*360);  // =arc length/circumference =arc length/(tread width*PI)*360 degrees
+	}
+	public double getREncoderAngle(){//this method returns somrthing so we define it as double, if void it would not return anything
+		return (getREncoderDistance() /(16.38*3.14159)*360);  // =arc length/circumference =arc length/(tread width*PI)*360 degrees
+	}
+	public double getAvgEncAngle() {
+		return ((getLEncoderAngle() +getREncoderAngle())/2);
 	}
 
     public void initDefaultCommand() {

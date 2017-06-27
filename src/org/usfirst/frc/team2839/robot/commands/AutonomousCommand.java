@@ -36,5 +36,6 @@ public class AutonomousCommand extends CommandGroup {
     	addSequential(new DriveDistance(distance()));
     	addSequential(new TurnAngle(angle()));
     	addSequential(new DriveDistance(distance()));
+    	addSequential(new TurnAngle(angle()));
     }
 }

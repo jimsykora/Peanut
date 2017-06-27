@@ -24,9 +24,15 @@ public class Telemetry extends Subsystem {
 		SmartDashboard.putNumber("R Encoder Count", Robot.drivetrain.getREncoderCount());
 		SmartDashboard.putNumber("R Encoder Distance", Robot.drivetrain.getREncoderDistance());
 		SmartDashboard.putNumber("R Encoder Rate", Robot.drivetrain.getREncoderRate());
+		SmartDashboard.putNumber("L Encoder Angle", Robot.drivetrain.getLEncoderAngle());
+		SmartDashboard.putNumber("R Encoder Angle", Robot.drivetrain.getREncoderAngle());
+		
+		SmartDashboard.putNumber("DifRate", Robot.drivetrain.getDifRate());
 		SmartDashboard.putNumber("AvgDistance", Robot.drivetrain.getAvgEncDistance());
 		SmartDashboard.putNumber("DifDistance", Robot.drivetrain.getDifDistance());
-		SmartDashboard.putNumber("EncoderAngle", Robot.drivetrain.getLEncoderAngle());
+		SmartDashboard.putNumber("AvgAngle", Robot.drivetrain.getAvgEncAngle());
+		
+		SmartDashboard.putNumber("Navx vs Encoder Angle", (Robot.navXMicro.getYaw()-Robot.drivetrain.getAvgEncAngle()));
 
 		SmartDashboard.putNumber("NavX yaw", Robot.navXMicro.getYaw());
 		SmartDashboard.putNumber("NavX pitch", Robot.navXMicro.getPitch());

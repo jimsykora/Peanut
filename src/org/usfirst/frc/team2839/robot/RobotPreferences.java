@@ -25,22 +25,22 @@ public class RobotPreferences {
 	
 	//for angle PID
 	public static double angleP() {
-		return Preferences.getInstance().getDouble("angleP", 0.05);  //add to subsystem PID: "enable method"
+		return Preferences.getInstance().getDouble("angleP", 0.045);  //add to subsystem PID: "enable method"
 	}
 	public static double angleI() {
 		return Preferences.getInstance().getDouble("angleI", 0.01);
 	}
 	public static double angleD() {
-		return Preferences.getInstance().getDouble("angleD", 0.01);
+		return Preferences.getInstance().getDouble("angleD", 0.015);
 	}
 	public static double angleF() {
 		return Preferences.getInstance().getDouble("angleF", 0.0);
 	}
 	public static double angleMaxSpeed() {
-		return Preferences.getInstance().getDouble("angleMaxSpeed", 0.6);
+		return Preferences.getInstance().getDouble("angleMaxSpeed", 0.55);
 	}
 	public static double angleTolerance() {
-		return Preferences.getInstance().getDouble("angleTolerance", 1.0);
+		return Preferences.getInstance().getDouble("angleTolerance", 0.5);
 	}
 	
 	
@@ -53,13 +53,13 @@ public class RobotPreferences {
 		return Preferences.getInstance().getDouble("autoDistance", 50);  //38 is about 2 revolutions
 	}
 	public static double autoAngle() {
-		return Preferences.getInstance().getDouble("autoAngle", 210);  //38 is about 2 revolutions
+		return Preferences.getInstance().getDouble("autoAngle", 180);  //38 is about 2 revolutions
 	}
 	public static double autoCorrectDistance() {
 		return Preferences.getInstance().getDouble("autoCorrectDistance", 0.3);  //to tweak the relative motor speeds
 	}
 	public static double autoCorrectAngle() {
-		return Preferences.getInstance().getDouble("autoCorrectAngle", 0.001);  //to tweak the relative motor speeds
+		return Preferences.getInstance().getDouble("autoCorrectAngle", 0.00051);  //to tweak the relative motor speeds
 	}
 	
 	

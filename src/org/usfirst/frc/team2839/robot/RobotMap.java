@@ -15,11 +15,11 @@ public class RobotMap {
 	public static final int DRIVETRAIN_L_MOTOR = 3;
 	public static final int DRIVETRAIN_R_MOTOR = 7;
 
-	public static final int L_Q_ENC_CH_A = 2;
-	public static final int L_Q_ENC_CH_B = 3;
-	public static final int R_Q_ENC_CH_A = 6;
-	public static final int R_Q_ENC_CH_B = 7;
+	public static final int L_Q_ENC_CH_A = 0;
+	public static final int L_Q_ENC_CH_B = 1;
+	public static final int R_Q_ENC_CH_A = 2;
+	public static final int R_Q_ENC_CH_B = 3;
 	public static final int OI_JOYSTICK = 2;
-	public static final int JOYSTICK_ROTATE_AXIS = 0; // look at joustick in driver station to pick preferred response
+	public static final int JOYSTICK_ROTATE_AXIS = 0; // look at joystick in driver station to pick preferred response
 	public static final int JOYSTICK_MOVE_AXIS = 3; 
 }

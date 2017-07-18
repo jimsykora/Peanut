@@ -29,7 +29,8 @@ public class TurnAngle extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drivetrain.arcadeDrive(Robot.drivetrain.getDifRate()*RobotPreferences.autoCorrectAngle(),Robot.drivetrainAnglePID.getOutput());
+    	//Robot.drivetrain.arcadeDrive(Robot.drivetrain.getDifRate()*RobotPreferences.autoCorrectAngle(),Robot.drivetrainAnglePID.getOutput());
+    	Robot.drivetrain.arcadeDrive((Robot.drivetrain.getLEncoderCount()+Robot.drivetrain.getREncoderCount())*(-RobotPreferences.autoCorrectAngle())-0.0,Robot.drivetrainAnglePID.getOutput());  //an attempt to force both wheels to same # of counts, a constant of -0.055 balances out close to equal counts
     }
 
     // Make this return true when this Command no longer needs to run execute()

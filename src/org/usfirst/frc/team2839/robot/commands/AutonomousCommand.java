@@ -33,9 +33,9 @@ public class AutonomousCommand extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	//addSequential(new DriveDistance(distance()));
+    	addSequential(new DriveDistance(distance()));
     	addSequential(new TurnAngle(angle()));
-    	//addSequential(new DriveDistance(distance()));
-    	//addSequential(new TurnAngle(angle()));
+    	addSequential(new DriveDistance(distance()));
+    	addSequential(new TurnAngle(angle()));
     }
 }

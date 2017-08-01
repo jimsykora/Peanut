@@ -2,6 +2,7 @@ package org.usfirst.frc.team2839.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -36,4 +37,9 @@ public class OI {
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
 	public Joystick stick = new Joystick(RobotMap.OI_JOYSTICK);
+//	Button D1 = new JoystickButton(stick, 1);
+//	Button D2 = new JoystickButton(stick, 2);
+//	Button D3 = new JoystickButton(stick, 3);
+//	Button D4 = new JoystickButton(stick, 4);
+
 }

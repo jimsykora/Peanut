@@ -14,6 +14,8 @@ public class RobotMap {
 
 	public static final int DRIVETRAIN_L_MOTOR = 3;
 	public static final int DRIVETRAIN_R_MOTOR = 7;
+	public static final int CAMERA_VERTICAL_SERVO = 8;
+	public static final int CAMERA_HORIZONTAL_SERVO = 9;
 
 	public static final int L_Q_ENC_CH_A = 0;
 	public static final int L_Q_ENC_CH_B = 1;

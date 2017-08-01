@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team2839.robot;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -44,7 +45,8 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		drivetrain = new Drivetrain();
 		navXMicro = new NavXMicro();
-		vision = new Vision();
+//		vision = new Vision();
+		CameraServer.getInstance().startAutomaticCapture();
 		drivetrainDistancePID = new DrivetrainDistancePID();
 		drivetrainAnglePID = new DrivetrainAnglePID();
 //		

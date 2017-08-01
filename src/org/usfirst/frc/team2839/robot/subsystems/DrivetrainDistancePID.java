@@ -51,7 +51,7 @@ public class DrivetrainDistancePID extends PIDSubsystem {
     	outputValid = true;
     }
     public double getOutput() {
-    	if(this.getPIDController().isEnabled() == false || outputValid == false) {
+    	if(this.getPIDController().isEnabled() == false || outputValid == false) { // == meams "is equal to", || means "or"
     		return 0.0;
     	}
     	return output;

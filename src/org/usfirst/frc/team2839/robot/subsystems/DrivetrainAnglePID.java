@@ -70,7 +70,7 @@ public class DrivetrainAnglePID extends PIDSubsystem {
     		return 0.0;
     	}
     	//output=output*Robot.drivetrainAnglePID.getRamp();
-    	output=output*Math.sqrt((Robot.drivetrainAnglePID.getElapsedTime())/(Robot.drivetrainAnglePID.getElapsedTime()+0.2)); //soft start
+    	output=output*Math.pow(getElapsedTime(), 3)/(Robot.drivetrainAnglePID.getElapsedTime()+0.1); //soft start
     	return output;
     }
     public void setRawTolerance(double tolerance) {

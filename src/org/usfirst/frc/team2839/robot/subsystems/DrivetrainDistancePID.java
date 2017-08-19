@@ -68,7 +68,7 @@ public class DrivetrainDistancePID extends PIDSubsystem {
     	if(this.getPIDController().isEnabled() == false || outputValid == false) { // == means "is equal to", || means "or"
     		return 0.0;
     	}
-    	output=output*Math.sqrt((Robot.drivetrainDistancePID.getElapsedTime())/(Robot.drivetrainDistancePID.getElapsedTime()+0.2));//soft start
+    	output=output*Math.pow(getElapsedTime(), 3)/(Robot.drivetrainAnglePID.getElapsedTime()+0.1); //soft start
     	return output;
     }
     public void setRawTolerance(double tolerance) {

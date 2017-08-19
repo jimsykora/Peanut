@@ -2,6 +2,8 @@ package org.usfirst.frc.team2839.robot.subsystems;
 
 import org.usfirst.frc.team2839.robot.RobotMap;
 import org.usfirst.frc.team2839.robot.commands.DriveArcade;
+
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -16,12 +18,14 @@ public class Drivetrain extends Subsystem {
     // here. Call these from Commands.
 	//VictorSP Rmotor = null;  //for swerve base
 	//VictorSP Lmotor = null;
-	private CANTalon Rmotor = null;  //for Peanut base
-	private CANTalon Lmotor = null;  //for Peanut base
+	private CANTalon Rmotor = null;  //for Peanut base which uses CAN
+	private CANTalon Lmotor = null;  //for Peanut base which uses CAN
 	
 	RobotDrive robotDrive = null;  //added, null because it initially has no value
 	Encoder LQEncoder = null;
 	Encoder RQEncoder = null;
+	AnalogInput IRSensor = null;
+	AnalogInput USSensor = null;
 	public Drivetrain(){			//added this constructor
 		//Rmotor = new VictorSP(RobotMap.DRIVETRAIN_R_MOTOR);
 		//Lmotor = new VictorSP(RobotMap.DRIVETRAIN_L_MOTOR);
@@ -33,6 +37,10 @@ public class Drivetrain extends Subsystem {
 		robotDrive.setSafetyEnabled(false);  // ignores feedback from motor that it is running under command
 		LQEncoder = new Encoder(RobotMap.L_Q_ENC_CH_A,RobotMap.L_Q_ENC_CH_B);
 		RQEncoder = new Encoder(RobotMap.R_Q_ENC_CH_A,RobotMap.R_Q_ENC_CH_B);
+		IRSensor = new AnalogInput(RobotMap.IR_DISTANCE_SENSOR);
+		USSensor = new AnalogInput(RobotMap.US_DISTANCE_SENSOR);
+		
+		Lmotor.setVoltageRampRate(96);  //look into this
 	}
 	
 	public void arcadeDrive(double moveSpeed, double rotateSpeed){ // creates the variable moveSpeed
@@ -43,6 +51,7 @@ public class Drivetrain extends Subsystem {
 		LQEncoder.reset();
 		RQEncoder.reset();
 	}
+
 	public double getLEncoderCount(){//this method returns somrthing so we define it as double, if void it would not return anything
 		return LQEncoder.get()*-1; // to get encoder directions to match
 	}
@@ -79,6 +88,12 @@ public class Drivetrain extends Subsystem {
 	}
 	public double getAvgEncAngle() {
 		return ((getLEncoderAngle() +getREncoderAngle())/2);
+	}
+	public double getIRSensorVoltage(){//this method returns somrthing so we define it as double, if void it would not return anything
+		return IRSensor.getAverageVoltage();
+	}	
+	public double getUSSensorVoltage(){//this method returns somrthing so we define it as double, if void it would not return anything
+		return USSensor.getAverageVoltage();
 	}
 
     public void initDefaultCommand() {

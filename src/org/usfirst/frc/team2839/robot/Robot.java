@@ -3,6 +3,7 @@ package org.usfirst.frc.team2839.robot;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -16,6 +17,8 @@ import org.usfirst.frc.team2839.robot.subsystems.DrivetrainDistancePID;
 import org.usfirst.frc.team2839.robot.subsystems.NavXMicro;
 import org.usfirst.frc.team2839.robot.subsystems.Telemetry;
 import org.usfirst.frc.team2839.robot.subsystems.Vision;
+
+//import com.mindsensors.CANSD540;   /////an attempt to implement setVoltageRamp() method
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -33,7 +36,11 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static DrivetrainDistancePID drivetrainDistancePID;
 	public static DrivetrainAnglePID drivetrainAnglePID;
-
+	
+	//CANSD540 motor;   /////an attempt to implement setVoltageRamp() method
+	//Joystick joystick;   /////an attempt to implement setVoltageRamp() method
+	
+	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
@@ -49,8 +56,11 @@ public class Robot extends IterativeRobot {
 		CameraServer.getInstance().startAutomaticCapture();
 		drivetrainDistancePID = new DrivetrainDistancePID();
 		drivetrainAnglePID = new DrivetrainAnglePID();
-//		
-//		chooser.addDefault("Default Auto", new AutonomousCommand());    /////////////
+	
+		//motor = new CANSD540(7);   /////an attempt to implement setVoltageRamp() method
+		//joystick = new Joystick(1);   /////an attempt to implement setVoltageRamp() method
+		
+		chooser.addDefault("Default Auto", new AutonomousCommand());    /////////////
 		//chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 		telemetry  = new Telemetry(); //Smart Dashboard & OI must be at the end
@@ -119,6 +129,9 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
+		
+		//motor.setStopMode(CANSD540.StopMode.Coast);   /////an attempt to implement setVoltageRamp() method
+		//motor.setVoltageRamp(100);   /////an attempt to implement setVoltageRamp() method
 	}
 
 	/**
@@ -136,5 +149,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void testPeriodic() {
 		LiveWindow.run();
+		
+		//motor.set(joystick.getY();   /////an attempt to implement setVoltageRamp() method
 	}
 }

@@ -3,6 +3,7 @@ package org.usfirst.frc.team2839.robot.subsystems;
 import org.usfirst.frc.team2839.robot.Robot;
 import org.usfirst.frc.team2839.robot.RobotPreferences;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
 /**
@@ -13,6 +14,7 @@ public class DrivetrainDistancePID extends PIDSubsystem {
 	boolean outputValid = false;
 	int targetCounter = 0;  //remove later if/when PID loop gets tuned properly. its used to delay turning off PID loop while in motion
 	double tolerance = 0.0;
+	Timer Et = null;  //elapsed time
 
     // Initialize your subsystem here
     public DrivetrainDistancePID() {
@@ -22,15 +24,27 @@ public class DrivetrainDistancePID extends PIDSubsystem {
         // enable() - Enables the PID controller.
     	super(0,0,0);
     	this.setSetpoint(0.0);
+    	Et = new Timer();
     	}
 
     public  void enable()  {
+    	Robot.drivetrainDistancePID.resetTimer();
     	this.getPIDController().setPID(RobotPreferences.driveP(), RobotPreferences.driveI(), RobotPreferences.driveD());
     	double maxSpeed = RobotPreferences.driveMaxSpeed();
     	this.setOutputRange(-maxSpeed, maxSpeed);
     	outputValid = false;
     	super.enable();
     }
+    public void resetTimer(){
+		Et.reset();
+		Et.start();
+	}
+	public double getElapsedTime() {
+		return Et.get();
+	}
+	/*public double getRamp() {
+		return Et.get()/2;
+	}*/
     
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -51,9 +65,10 @@ public class DrivetrainDistancePID extends PIDSubsystem {
     	outputValid = true;
     }
     public double getOutput() {
-    	if(this.getPIDController().isEnabled() == false || outputValid == false) { // == meams "is equal to", || means "or"
+    	if(this.getPIDController().isEnabled() == false || outputValid == false) { // == means "is equal to", || means "or"
     		return 0.0;
     	}
+    	output=output*Math.sqrt((Robot.drivetrainDistancePID.getElapsedTime())/(Robot.drivetrainDistancePID.getElapsedTime()+0.2));//soft start
     	return output;
     }
     public void setRawTolerance(double tolerance) {

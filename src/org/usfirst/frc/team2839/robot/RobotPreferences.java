@@ -11,41 +11,41 @@ public class RobotPreferences {
 		return Preferences.getInstance().getDouble("driveI", 0.0);
 	}
 	public static double driveD() {
-		return Preferences.getInstance().getDouble("driveD", 0.1);
+		return Preferences.getInstance().getDouble("driveD", 0.005);
 	}
 	public static double driveF() {
 		return Preferences.getInstance().getDouble("driveF", 0.0);
 	}
 	public static double driveMaxSpeed() {
-		return Preferences.getInstance().getDouble("driveMaxSpeed", 0.7);
+		return Preferences.getInstance().getDouble("driveMaxSpeed", 1.0);
 	}
 	public static double driveTolerance() {
-		return Preferences.getInstance().getDouble("driveTolerance", 5.0);
+		return Preferences.getInstance().getDouble("driveTolerance", 8.0);
 	}
 	
 	//for angle PID
 	public static double angleP() {
-		return Preferences.getInstance().getDouble("angleP", 0.045);  //add to subsystem PID: "enable method"
+		return Preferences.getInstance().getDouble("angleP", 0.02);  //add to subsystem PID: "enable method"
 	}
 	public static double angleI() {
-		return Preferences.getInstance().getDouble("angleI", 0.01);
+		return Preferences.getInstance().getDouble("angleI", 0.0);
 	}
 	public static double angleD() {
-		return Preferences.getInstance().getDouble("angleD", 0.015);
+		return Preferences.getInstance().getDouble("angleD", 0.01);
 	}
 	public static double angleF() {
 		return Preferences.getInstance().getDouble("angleF", 0.0);
 	}
 	public static double angleMaxSpeed() {
-		return Preferences.getInstance().getDouble("angleMaxSpeed", 0.55);
+		return Preferences.getInstance().getDouble("angleMaxSpeed", 1.0);
 	}
 	public static double angleTolerance() {
-		return Preferences.getInstance().getDouble("angleTolerance", 0.5);
+		return Preferences.getInstance().getDouble("angleTolerance", 4.0);
 	}
 	
 	
 	public static int targetCount() {
-		return Preferences.getInstance().getInt("targetCount", 20);
+		return Preferences.getInstance().getInt("targetCount", 5);
 	}
 	
 	//auto
@@ -59,7 +59,7 @@ public class RobotPreferences {
 		return Preferences.getInstance().getDouble("autoCorrectDistance", 0.3);  //to tweak the relative motor speeds
 	}
 	public static double autoCorrectAngle() {
-		return Preferences.getInstance().getDouble("autoCorrectAngle", 0.00051);  //to tweak the relative motor speeds
+		return Preferences.getInstance().getDouble("autoCorrectAngle", 0.00047);  //to tweak the relative motor speeds
 	}
 	
 	

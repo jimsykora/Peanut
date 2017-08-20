@@ -35,6 +35,7 @@ public class DrivetrainDistancePID extends PIDSubsystem {
     	outputValid = false;
     	super.enable();
     }
+    
     public void resetTimer(){
 		Et.reset();
 		Et.start();
@@ -42,9 +43,6 @@ public class DrivetrainDistancePID extends PIDSubsystem {
 	public double getElapsedTime() {
 		return Et.get();
 	}
-	/*public double getRamp() {
-		return Et.get()/2;
-	}*/
     
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -68,7 +66,8 @@ public class DrivetrainDistancePID extends PIDSubsystem {
     	if(this.getPIDController().isEnabled() == false || outputValid == false) { // == means "is equal to", || means "or"
     		return 0.0;
     	}
-    	output=output*Math.pow(getElapsedTime(), 3)/(Robot.drivetrainAnglePID.getElapsedTime()+0.1); //soft start
+    	//output = output*0.8;// find min & max multipliers for stable operation, then put min and max-min in equation below
+    	output = output*Math.sin(Robot.drivetrainDistancePID.getElapsedTime()*(180/RobotPreferences.driveSineTime()/57.3))*0.5+(1-0.5);//output should start at 0.5 then cycle sinewave up to 1.0 & back to 0.5
     	return output;
     }
     public void setRawTolerance(double tolerance) {

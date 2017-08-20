@@ -40,7 +40,7 @@ public class Drivetrain extends Subsystem {
 		IRSensor = new AnalogInput(RobotMap.IR_DISTANCE_SENSOR);
 		USSensor = new AnalogInput(RobotMap.US_DISTANCE_SENSOR);
 		
-		Lmotor.setVoltageRampRate(96);  //look into this
+		//setVoltageRampRate(96);  //look into this
 	}
 	
 	public void arcadeDrive(double moveSpeed, double rotateSpeed){ // creates the variable moveSpeed

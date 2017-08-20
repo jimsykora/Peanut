@@ -31,13 +31,13 @@ public class RobotPreferences {
 		return Preferences.getInstance().getDouble("angleI", 0.0);
 	}
 	public static double angleD() {
-		return Preferences.getInstance().getDouble("angleD", 0.01);
+		return Preferences.getInstance().getDouble("angleD", 0.005);
 	}
 	public static double angleF() {
 		return Preferences.getInstance().getDouble("angleF", 0.0);
 	}
 	public static double angleMaxSpeed() {
-		return Preferences.getInstance().getDouble("angleMaxSpeed", 1.0);
+		return Preferences.getInstance().getDouble("angleMaxSpeed", 0.5);
 	}
 	public static double angleTolerance() {
 		return Preferences.getInstance().getDouble("angleTolerance", 4.0);
@@ -45,15 +45,21 @@ public class RobotPreferences {
 	
 	
 	public static int targetCount() {
-		return Preferences.getInstance().getInt("targetCount", 5);
+		return Preferences.getInstance().getInt("targetCount", 1);
 	}
 	
 	//auto
 	public static double autoDistance() {
-		return Preferences.getInstance().getDouble("autoDistance", 50);  //38 is about 2 revolutions
+		return Preferences.getInstance().getDouble("autoDistance", 100);  //38 is about 2 revolutions
+	}
+	public static double driveSineTime() {
+		return Preferences.getInstance().getDouble("driveSineTime", 1.0);  //max time, or less, to go auto distance
 	}
 	public static double autoAngle() {
 		return Preferences.getInstance().getDouble("autoAngle", 180);  //38 is about 2 revolutions
+	}
+	public static double angleSineTime() {
+		return Preferences.getInstance().getDouble("angleSineTime", 0.7);  //max time, or less, to go auto angle
 	}
 	public static double autoCorrectDistance() {
 		return Preferences.getInstance().getDouble("autoCorrectDistance", 0.3);  //to tweak the relative motor speeds

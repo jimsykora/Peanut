@@ -43,9 +43,6 @@ public class DrivetrainAnglePID extends PIDSubsystem {
     public double getElapsedTime() {
 		return Et.get();
 	}
-	/*public double getRamp() {
-		return Et.get()/2;
-	}*/
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -69,8 +66,8 @@ public class DrivetrainAnglePID extends PIDSubsystem {
     	if(this.getPIDController().isEnabled() == false || outputValid == false) { // == means "is equal to", || means "or"
     		return 0.0;
     	}
-    	//output=output*Robot.drivetrainAnglePID.getRamp();
-    	output=output*Math.pow(getElapsedTime(), 3)/(Robot.drivetrainAnglePID.getElapsedTime()+0.1); //soft start
+    	//output = output*0.8;// find min & max multipliers for stable operation, then put min and max-min in equation below
+    	output = output*Math.sin(Robot.drivetrainAnglePID.getElapsedTime()*(180/RobotPreferences.angleSineTime()/57.3))*0.5+(0.8-0.5);//output should start at 0.5 then cycle sinewave up to 0.8 & back to 0.5
     	return output;
     }
     public void setRawTolerance(double tolerance) {

@@ -39,6 +39,9 @@ public class Telemetry extends Subsystem {
 		SmartDashboard.putNumber("NavX yaw", Robot.navXMicro.getYaw());
 		SmartDashboard.putNumber("NavX pitch", Robot.navXMicro.getPitch());
 		SmartDashboard.putNumber("NavX roll", Robot.navXMicro.getRoll());
+		//SmartDashboard.putNumber("ET", Robot.drivetrainDistancePID.Et.get());
+		//SmartDashboard.putNumber("output, D", Robot.drivetrainDistancePID.output);
+		//SmartDashboard.putNumber("output, A", Robot.drivetrainAnglePID.output);
 	}
 
     public void initDefaultCommand() {

@@ -67,7 +67,9 @@ public class RobotPreferences {
 	public static double autoCorrectAngle() {
 		return Preferences.getInstance().getDouble("autoCorrectAngle", 0.00047);  //to tweak the relative motor speeds
 	}
-	
+	public static double autoCorrectJetson() {
+		return Preferences.getInstance().getDouble("autoCorrectJetson", 0.3);  //to tweak the relative motor speeds
+	}
 	
 	
 	//for keeping yaw = 0 during drive forward drive

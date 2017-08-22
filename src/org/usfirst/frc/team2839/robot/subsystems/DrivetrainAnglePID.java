@@ -54,6 +54,7 @@ public class DrivetrainAnglePID extends PIDSubsystem {
         // e.g. a sensor, like a potentiometer:
         // yourPot.getAverageVoltage() / kYourMaxVoltage;
         return Robot.drivetrain.getAvgEncAngle();
+        //return Robot.drivetrain.getLEncoderAngle();  //no differernce if used
     }
 
     protected void usePIDOutput(double output) {

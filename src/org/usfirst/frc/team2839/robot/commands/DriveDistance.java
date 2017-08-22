@@ -29,7 +29,8 @@ public class DriveDistance extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drivetrain.arcadeDrive(Robot.drivetrainDistancePID.getOutput(), Robot.drivetrain.getDifDistance()*RobotPreferences.autoCorrectDistance());
+    	Robot.drivetrain.arcadeDrive(Robot.drivetrainDistancePID.getOutput(), Robot.drivetrain.getDifDistance()*RobotPreferences.autoCorrectDistance());  //motion tweaked by encoder count ratio
+    	//Robot.drivetrain.arcadeDrive(Robot.drivetrainDistancePID.getOutput(), Robot.vision.getTargetAngleCorrelation()*RobotPreferences.autoCorrectJetson());  //motion tweaked by Jetson target area ratio
     }
 
     // Make this return true when this Command no longer needs to run execute()

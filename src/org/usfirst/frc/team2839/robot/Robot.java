@@ -18,8 +18,6 @@ import org.usfirst.frc.team2839.robot.subsystems.NavXMicro;
 import org.usfirst.frc.team2839.robot.subsystems.Telemetry;
 import org.usfirst.frc.team2839.robot.subsystems.Vision;
 
-//import com.mindsensors.CANSD540;   /////an attempt to implement setVoltageRamp() method
-
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -35,11 +33,7 @@ public class Robot extends IterativeRobot {
 	public static Telemetry telemetry; //Smart Dashboard & OI must be at the end
 	public static OI oi;
 	public static DrivetrainDistancePID drivetrainDistancePID;
-	public static DrivetrainAnglePID drivetrainAnglePID;
-	
-	//CANSD540 motor;   /////an attempt to implement setVoltageRamp() method
-	//Joystick joystick;   /////an attempt to implement setVoltageRamp() method
-	
+	public static DrivetrainAnglePID drivetrainAnglePID;	
 	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -52,14 +46,11 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		drivetrain = new Drivetrain();
 		navXMicro = new NavXMicro();
-//		vision = new Vision();
-		CameraServer.getInstance().startAutomaticCapture();
+		vision = new Vision();
+//		CameraServer.getInstance().startAutomaticCapture();
 		drivetrainDistancePID = new DrivetrainDistancePID();
 		drivetrainAnglePID = new DrivetrainAnglePID();
-	
-		//motor = new CANSD540(7);   /////an attempt to implement setVoltageRamp() method
-		//joystick = new Joystick(1);   /////an attempt to implement setVoltageRamp() method
-		
+			
 		chooser.addDefault("Default Auto", new AutonomousCommand());    /////////////
 		//chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
@@ -129,9 +120,6 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
-		
-		//motor.setStopMode(CANSD540.StopMode.Coast);   /////an attempt to implement setVoltageRamp() method
-		//motor.setVoltageRamp(100);   /////an attempt to implement setVoltageRamp() method
 	}
 
 	/**

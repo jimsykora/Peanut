@@ -12,13 +12,13 @@ public class Vision extends Subsystem {
 		table = NetworkTable.getTable("NURDVision");
 	}
 	public double getTargetDistance() { //this is a method
-		return table.getNumber("Distance", -999);
+		return table.getNumber("Distance", -99.9);
 	}
 	public double getTargetOffset() { //this is a method
-		return table.getNumber("Offset", -999);
+		return table.getNumber("Offset", -99.9);
 	}
-	public double getTargetAngleCorrelation() { //this is a method
-		return table.getNumber("Angle Correlation", -999);
+	public double getTargetAngle() { //this is a method
+		return table.getNumber("Angle Correlation", -99.9);
 	}
 	
     // Put methods for controlling this subsystem

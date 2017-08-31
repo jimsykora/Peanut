@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2839.robot.subsystems;
 
+import org.usfirst.frc.team2839.robot.Robot;
 import org.usfirst.frc.team2839.robot.RobotMap;
 import org.usfirst.frc.team2839.robot.commands.DriveArcade;
 
@@ -8,6 +9,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import com.ctre.*;
+import org.usfirst.frc.team2839.robot.subsystems.Vision;
 
 /**
  *
@@ -26,6 +28,9 @@ public class Drivetrain extends Subsystem {
 	Encoder RQEncoder = null;
 	AnalogInput IRSensor = null;
 	AnalogInput USSensor = null;
+	Vision TargetDistance = null;
+	Vision TargetOffset = null;
+	Vision TargetAngleCorrelation = null;
 	public Drivetrain(){			//added this constructor
 		//Rmotor = new VictorSP(RobotMap.DRIVETRAIN_R_MOTOR);
 		//Lmotor = new VictorSP(RobotMap.DRIVETRAIN_L_MOTOR);

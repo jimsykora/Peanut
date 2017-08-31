@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team2839.robot.commands.AutonomousCommand;
 import org.usfirst.frc.team2839.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team2839.robot.subsystems.DrivetrainAnglePID;
+import org.usfirst.frc.team2839.robot.subsystems.DrivetrainCameraPID;
 import org.usfirst.frc.team2839.robot.subsystems.DrivetrainDistancePID;
 import org.usfirst.frc.team2839.robot.subsystems.NavXMicro;
 import org.usfirst.frc.team2839.robot.subsystems.Telemetry;
@@ -33,7 +34,8 @@ public class Robot extends IterativeRobot {
 	public static Telemetry telemetry; //Smart Dashboard & OI must be at the end
 	public static OI oi;
 	public static DrivetrainDistancePID drivetrainDistancePID;
-	public static DrivetrainAnglePID drivetrainAnglePID;	
+	public static DrivetrainAnglePID drivetrainAnglePID;
+	public static DrivetrainCameraPID drivetrainCameraPID;
 	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -50,6 +52,7 @@ public class Robot extends IterativeRobot {
 //		CameraServer.getInstance().startAutomaticCapture();
 		drivetrainDistancePID = new DrivetrainDistancePID();
 		drivetrainAnglePID = new DrivetrainAnglePID();
+		drivetrainCameraPID = new DrivetrainCameraPID();
 			
 		chooser.addDefault("Default Auto", new AutonomousCommand());    /////////////
 		//chooser.addObject("My Auto", new MyAutoCommand());

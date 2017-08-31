@@ -20,7 +20,7 @@ public class RobotPreferences {
 		return Preferences.getInstance().getDouble("driveMaxSpeed", 1.0);
 	}
 	public static double driveTolerance() {
-		return Preferences.getInstance().getDouble("driveTolerance", 8.0);
+		return Preferences.getInstance().getDouble("driveTolerance", 1.0);
 	}
 	
 	//for angle PID
@@ -70,7 +70,18 @@ public class RobotPreferences {
 	public static double autoCorrectJetson() {
 		return Preferences.getInstance().getDouble("autoCorrectJetson", 0.3);  //to tweak the relative motor speeds
 	}
-	
+	public static double autoEndpoint() {
+		return Preferences.getInstance().getDouble("autoEndpoint", 20);  //38 is about 2 revolutions
+	}
+	public static double autoCorrectCameraAngle() {
+		return Preferences.getInstance().getDouble("autoCorrectCameraAngle", 0.001);  //to tweak the relative motor speeds
+	}
+	public static double autoCorrectOffset() {
+		return Preferences.getInstance().getDouble("autoCorrectOffset", 0.001);  //to tweak the relative motor speeds
+	}
+	public static double cameraMaxSpeed() {
+		return Preferences.getInstance().getDouble("autoCameraMaxSpeed", 1.0);
+	}
 	
 	//for keeping yaw = 0 during drive forward drive
 	public static double yawZeroP() {

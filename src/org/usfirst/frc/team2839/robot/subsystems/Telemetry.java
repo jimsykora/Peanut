@@ -34,7 +34,7 @@ public class Telemetry extends Subsystem {
 		SmartDashboard.putNumber("IRVoltage", Robot.drivetrain.getIRSensorVoltage());
 		SmartDashboard.putNumber("USVoltage", Robot.drivetrain.getUSSensorVoltage());
 		
-		SmartDashboard.putNumber("JetsonAngleCorrelation", Robot.vision.getTargetAngleCorrelation());
+		SmartDashboard.putNumber("JetsonAngle", Robot.vision.getTargetAngle());
 		SmartDashboard.putNumber("JetsonDistance", Robot.vision.getTargetDistance());
 		SmartDashboard.putNumber("JetsonOffset", Robot.vision.getTargetOffset());
 		

@@ -15,7 +15,11 @@ import org.usfirst.frc.team2839.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team2839.robot.subsystems.DrivetrainAnglePID;
 import org.usfirst.frc.team2839.robot.subsystems.DrivetrainCameraPID;
 import org.usfirst.frc.team2839.robot.subsystems.DrivetrainDistancePID;
+import org.usfirst.frc.team2839.robot.subsystems.LeftDrive;
+import org.usfirst.frc.team2839.robot.subsystems.LeftDrivePID;
 import org.usfirst.frc.team2839.robot.subsystems.NavXMicro;
+import org.usfirst.frc.team2839.robot.subsystems.RightDrive;
+import org.usfirst.frc.team2839.robot.subsystems.RightDrivePID;
 import org.usfirst.frc.team2839.robot.subsystems.Telemetry;
 import org.usfirst.frc.team2839.robot.subsystems.Vision;
 
@@ -36,6 +40,10 @@ public class Robot extends IterativeRobot {
 	public static DrivetrainDistancePID drivetrainDistancePID;
 	public static DrivetrainAnglePID drivetrainAnglePID;
 	public static DrivetrainCameraPID drivetrainCameraPID;
+	public static LeftDrive leftDrive;
+	public static LeftDrivePID leftDrivePID;
+	public static RightDrive rightDrive;
+	public static RightDrivePID rightDrivePID;
 	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -53,6 +61,10 @@ public class Robot extends IterativeRobot {
 		drivetrainDistancePID = new DrivetrainDistancePID();
 		drivetrainAnglePID = new DrivetrainAnglePID();
 		drivetrainCameraPID = new DrivetrainCameraPID();
+		leftDrive = new LeftDrive();
+		leftDrivePID = new LeftDrivePID();
+		rightDrive = new RightDrive();
+		rightDrivePID = new RightDrivePID();
 			
 		chooser.addDefault("Default Auto", new AutonomousCommand());    /////////////
 		//chooser.addObject("My Auto", new MyAutoCommand());

@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2839.robot.commands;
 
+import org.usfirst.frc.team2839.robot.Robot;
 import org.usfirst.frc.team2839.robot.RobotPreferences;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -16,6 +17,12 @@ public class AutonomousCommand extends CommandGroup {
 	}
 	public double endpoint() {
 		return RobotPreferences.autoEndpoint();
+	}
+	public double arclength() {
+		return Robot.leftDrive.getArclength();
+	}
+	public double lQEncoderCount() {
+		return Robot.leftDrive.getLEncoderCount();
 	}
 
     public AutonomousCommand() {
@@ -38,7 +45,9 @@ public class AutonomousCommand extends CommandGroup {
     	
 //    	addSequential(new DriveDistance(distance()));
 //    	addSequential(new TurnAngle(angle()));
-    	addSequential(new DriveCamera(endpoint()));
+    	addSequential(new LeftOffset(arclength()));
+    	addSequential(new RightOffset(lQEncoderCount()));
+    	//addSequential(new DriveCamera(endpoint()));
 //    	addSequential(new DriveDistance(distance()));
 //    	addSequential(new TurnAngle(angle()));
     }

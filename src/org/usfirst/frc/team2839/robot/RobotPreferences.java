@@ -71,16 +71,16 @@ public class RobotPreferences {
 		return Preferences.getInstance().getDouble("autoCorrectJetson", 0.3);  //to tweak the relative motor speeds
 	}
 	public static double autoEndpoint() {
-		return Preferences.getInstance().getDouble("autoEndpoint", 20);  //38 is about 2 revolutions
+		return Preferences.getInstance().getDouble("autoEndpoint", 25);  //38 is about 2 revolutions
 	}
 	public static double autoCorrectCameraAngle() {
-		return Preferences.getInstance().getDouble("autoCorrectCameraAngle", 0.001);  //to tweak the relative motor speeds
+		return Preferences.getInstance().getDouble("autoCorrectCameraAngle", 0.25);  //to tweak the relative motor speeds
 	}
 	public static double autoCorrectOffset() {
-		return Preferences.getInstance().getDouble("autoCorrectOffset", 0.001);  //to tweak the relative motor speeds
+		return Preferences.getInstance().getDouble("autoCorrectOffset", 1.7);  //to tweak the relative motor speeds
 	}
 	public static double cameraMaxSpeed() {
-		return Preferences.getInstance().getDouble("autoCameraMaxSpeed", 1.0);
+		return Preferences.getInstance().getDouble("autoCameraMaxSpeed", 0.6);
 	}
 	
 	//for keeping yaw = 0 during drive forward drive

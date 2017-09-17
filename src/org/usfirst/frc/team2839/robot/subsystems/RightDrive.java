@@ -25,7 +25,7 @@ public class RightDrive extends Subsystem {
 		Rmotor = new CANTalon(RobotMap.DRIVETRAIN_R_MOTOR);    //for Peanut base
 		Rmotor.enableBrakeMode(true);
 		Rmotor.setSafetyEnabled(false);  // ignores feedback from motor that it is running under command
-		RQEncoder = new Encoder(RobotMap.R_Q_ENC_CH_A,RobotMap.R_Q_ENC_CH_B);
+		RQEncoder = new Encoder(RobotMap.R_Q_ENC_CH_A_OFFSET,RobotMap.R_Q_ENC_CH_B_OFFSET);
 	}
 	
 	public void setAngle(double angle){

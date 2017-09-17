@@ -27,7 +27,7 @@ public class LeftDrive extends Subsystem {
 		Lmotor = new CANTalon(RobotMap.DRIVETRAIN_L_MOTOR);    //for Peanut base
 		Lmotor.enableBrakeMode(true);
 		Lmotor.setSafetyEnabled(false);  // ignores feedback from motor that it is running under command
-		LQEncoder = new Encoder(RobotMap.L_Q_ENC_CH_A,RobotMap.L_Q_ENC_CH_B);
+		LQEncoder = new Encoder(RobotMap.L_Q_ENC_CH_A_OFFSET,RobotMap.L_Q_ENC_CH_B_OFFSET);
 	}
 	
 	public void setAngle(double angle){

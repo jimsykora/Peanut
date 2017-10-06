@@ -31,35 +31,25 @@ public class LeftDrive extends Subsystem {
 	}
 	
 	public void setAngle(double angle){
-		Lmotor.setPosition(getReqdCounts());
+		Lmotor.set(angle);
 	}
 	
 	public void resetEncoderCount(){
 		LQEncoder.reset();
 	}
-	public double getLEncoderCount(){//this method returns somrthing so we define it as double, if void it would not return anything
+	public double getLEncoderCount(){//this method returns something so we define it as double, if void it would not return anything
 		return LQEncoder.get()*-1; // to get encoder directions to match
 	}
-	public double getCountsPerInch() {
-		return 500*1/(6*3.14159);  //(encoder counts per rev)*(gear reduction)/(wheel dia * PI)
+	public double getLEncoderAngle(){//this method returns something so we define it as double, if void it would not return anything
+		return (getLEncoderInches()/360*2*3.14159);
 	}
-	public double getRadians(){
-		return Math.acos((1-Math.abs(0.5*Robot.vision.getTargetOffset()/16.65)));  //ArcCos(1-0.5*offset/robot treadwidth)
-	}
-	public double getArclength() {
-		if(Robot.vision.getTargetOffset()>=0.0){
-		return (getRadians()*16.65);//radians * robot treadwidth
-		}
-		return (getRadians()*16.65*-1);
-	}
-	public double getReqdCounts() {
-		return getCountsPerInch()*getRadians();
+	public double getLEncoderInches(){//this method returns something so we define it as double, if void it would not return anything
+		return (getLEncoderCount() /(16.38*3.14159)*360);  // =arc length/circumference =arc length/(tread width*PI)*360 degrees
 	}
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new LeftOffset(getReqdCounts()));
     }
 }
 

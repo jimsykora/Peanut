@@ -18,11 +18,11 @@ public class AutonomousCommand extends CommandGroup {
 	public double endpoint() {
 		return RobotPreferences.autoEndpoint();
 	}
-	public double arclength() {
-		return Robot.leftDrive.getArclength();
-	}
 	public double lQEncoderCount() {
 		return Robot.leftDrive.getLEncoderCount();
+	}
+	public double halfAngleOfOffset() {
+		return Robot.vision.getHalfAngleOfOffset();
 	}
 
     public AutonomousCommand() {
@@ -43,10 +43,12 @@ public class AutonomousCommand extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
+    	double offset = Robot.vision.getHalfAngleOfOffset();
+    	
 //    	addSequential(new DriveDistance(distance()));
 //    	addSequential(new TurnAngle(angle()));
-    	addSequential(new LeftOffset(arclength()));
-    	addSequential(new RightOffset(lQEncoderCount()));
+    	addSequential(new LeftOffset(offset));   //(halfAngleOfOffset()));
+    	addSequential(new RightOffset(offset));   //(halfAngleOfOffset()));
     	//addSequential(new DriveCamera(endpoint()));
 //    	addSequential(new DriveDistance(distance()));
 //    	addSequential(new TurnAngle(angle()));

@@ -14,6 +14,7 @@ public class RightDrivePID extends PIDSubsystem {
 	int targetCounter = 0;  //remove later if/when PID loop gets tuned properly. its used to delay turning off PID loop while in motion
 	double tolerance = 0.0;
     // Initialize your subsystem here
+	
     public RightDrivePID() {
         // Use these to get going:
         // setSetpoint() -  Sets where the PID controller should move the system
@@ -39,7 +40,7 @@ public class RightDrivePID extends PIDSubsystem {
         // Return your input value for the PID loop
         // e.g. a sensor, like a potentiometer:
         // yourPot.getAverageVoltage() / kYourMaxVoltage;
-        return Robot.rightDrive.getREncoderCount();
+        return Robot.rightDrive.getREncoderAngle();
     }
 
     protected void usePIDOutput(double output) {
@@ -60,7 +61,7 @@ public class RightDrivePID extends PIDSubsystem {
     	this.tolerance = tolerance;
     }
     public boolean onRawTargrt() {
-    	if(Math.abs(getPIDController().getSetpoint() - Robot.rightDrive.getREncoderCount()) < tolerance) {
+    	if(Math.abs(getPIDController().getSetpoint() - Robot.rightDrive.getREncoderAngle()) < tolerance) {
     		targetCounter = targetCounter +1;
     	}
     	else {

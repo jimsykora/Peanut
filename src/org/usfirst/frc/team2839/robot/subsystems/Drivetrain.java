@@ -57,22 +57,22 @@ public class Drivetrain extends Subsystem {
 		RQEncoder.reset();
 	}
 
-	public double getLEncoderCount(){//this method returns somrthing so we define it as double, if void it would not return anything
+	public double getLEncoderCount(){//this method returns something so we define it as double, if void it would not return anything
 		return LQEncoder.get()*-1; // to get encoder directions to match
 	}
-	public double getREncoderCount(){//this method returns somrthing so we define it as double, if void it would not return anything
+	public double getREncoderCount(){//this method returns something so we define it as double, if void it would not return anything
 		return RQEncoder.get(); // to get encoder directions to match
 	}
-	public double getLEncoderDistance(){//this method returns somrthing so we define it as double, if void it would not return anything
+	public double getLEncoderDistance(){//this method returns something so we define it as double, if void it would not return anything
 		return (getLEncoderCount() *3.14159*6/500/1);  // =count*PI*(wheel diameter)/(encoder counts per rev)/(gear ratio, encoder to wheel)
 	}
-	public double getREncoderDistance(){//this method returns somrthing so we define it as double, if void it would not return anything
+	public double getREncoderDistance(){//this method returns something so we define it as double, if void it would not return anything
 		return (getREncoderCount() *3.14159*6/500/1);  // =count*PI*(wheel diameter)/(encoder counts per rev)/(gear ratio, encoder to wheel)
 	}
-	public double getLEncoderRate(){//this method returns somrthing so we define it as double, if void it would not return anything
+	public double getLEncoderRate(){//this method returns something so we define it as double, if void it would not return anything
 		return LQEncoder.getRate()*-1; //to get same rate direction
 	}
-	public double getREncoderRate(){//this method returns somrthing so we define it as double, if void it would not return anything
+	public double getREncoderRate(){//this method returns something so we define it as double, if void it would not return anything
 		return RQEncoder.getRate();
 	}
 	public double getDifRate() {
@@ -85,19 +85,19 @@ public class Drivetrain extends Subsystem {
 	public double getDifDistance() {
 		return ((getLEncoderDistance()-getREncoderDistance()));
 	}
-	public double getLEncoderAngle(){//this method returns somrthing so we define it as double, if void it would not return anything
+	public double getLEncoderAngle(){//this method returns something so we define it as double, if void it would not return anything
 		return (-getLEncoderDistance() /(16.38*3.14159)*360);  // =arc length/circumference =arc length/(tread width*PI)*360 degrees
 	}
-	public double getREncoderAngle(){//this method returns somrthing so we define it as double, if void it would not return anything
+	public double getREncoderAngle(){//this method returns something so we define it as double, if void it would not return anything
 		return (getREncoderDistance() /(16.38*3.14159)*360);  // =arc length/circumference =arc length/(tread width*PI)*360 degrees
 	}
 	public double getAvgEncAngle() {
 		return ((getLEncoderAngle() +getREncoderAngle())/2);
 	}
-	public double getIRSensorVoltage(){//this method returns somrthing so we define it as double, if void it would not return anything
+	public double getIRSensorVoltage(){//this method returns something so we define it as double, if void it would not return anything
 		return IRSensor.getAverageVoltage();
 	}	
-	public double getUSSensorVoltage(){//this method returns somrthing so we define it as double, if void it would not return anything
+	public double getUSSensorVoltage(){//this method returns something so we define it as double, if void it would not return anything
 		return USSensor.getAverageVoltage();
 	}
 

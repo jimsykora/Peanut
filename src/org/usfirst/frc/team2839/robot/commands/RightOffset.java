@@ -30,7 +30,7 @@ public class RightOffset extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.rightDrivePID.setSetpoint(arclength);
-    	Robot.rightDrive.setAngle(Robot.leftDrive.getLEncoderCount());  // want right motor to go same # of counts as left motor
+    	Robot.rightDrive.setAngle(Robot.rightDrivePID.getOutput());  // want right motor to go same # of counts as left motor
     	}
 
     // Make this return true when this Command no longer needs to run execute()

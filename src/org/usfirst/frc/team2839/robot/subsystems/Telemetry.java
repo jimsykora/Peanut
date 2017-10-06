@@ -19,10 +19,14 @@ public class Telemetry extends Subsystem {
 	}
 	public void update() {
 		SmartDashboard.putNumber("L Encoder Count", Robot.drivetrain.getLEncoderCount());
+		SmartDashboard.putNumber("LD Encoder Count", Robot.leftDrive.getLEncoderCount());
+		SmartDashboard.putNumber("LD Encoder Angle", Robot.leftDrive.getLEncoderAngle());
 		SmartDashboard.putNumber("L Encoder Distance", Robot.drivetrain.getLEncoderDistance());
 		SmartDashboard.putNumber("L Encoder Rate", Robot.drivetrain.getLEncoderRate());
 		SmartDashboard.putNumber("L Encoder Angle", Robot.drivetrain.getLEncoderAngle());
 		SmartDashboard.putNumber("R Encoder Count", Robot.drivetrain.getREncoderCount());
+		SmartDashboard.putNumber("RD Encoder Count", Robot.rightDrive.getREncoderCount());
+		SmartDashboard.putNumber("RD Encoder Angle", Robot.rightDrive.getREncoderAngle());
 		SmartDashboard.putNumber("R Encoder Distance", Robot.drivetrain.getREncoderDistance());
 		SmartDashboard.putNumber("R Encoder Rate", Robot.drivetrain.getREncoderRate());
 		SmartDashboard.putNumber("R Encoder Angle", Robot.drivetrain.getREncoderAngle());

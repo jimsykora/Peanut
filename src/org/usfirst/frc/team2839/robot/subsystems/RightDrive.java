@@ -2,12 +2,14 @@ package org.usfirst.frc.team2839.robot.subsystems;
 
 import org.usfirst.frc.team2839.robot.Robot;
 import org.usfirst.frc.team2839.robot.RobotMap;
+import org.usfirst.frc.team2839.robot.RobotPreferences;
 import org.usfirst.frc.team2839.robot.commands.LeftOffset;
-import org.usfirst.frc.team2839.robot.commands.RightOffset;
 
 import com.ctre.CANTalon;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -29,35 +31,25 @@ public class RightDrive extends Subsystem {
 	}
 	
 	public void setAngle(double angle){
-		Rmotor.setPosition(getReqdCounts());
+		Rmotor.set(-angle);
 	}
 	
 	public void resetEncoderCount(){
 		RQEncoder.reset();
 	}
-	public double getREncoderCount(){//this method returns somrthing so we define it as double, if void it would not return anything
-		return RQEncoder.get()*-1; // to get encoder directions to match
+	public double getREncoderCount(){//this method returns something so we define it as double, if void it would not return anything
+		return RQEncoder.get(); // to get encoder directions to match
 	}
-	public double getCountsPerInch() {
-		return 500*1/(6*3.14159);  //(encoder counts per rev)*(gear reduction)/(wheel dia * PI)
+	public double getREncoderAngle(){//this method returns something so we define it as double, if void it would not return anything
+		return (getREncoderInches()/360*2*3.14159);
 	}
-	public double getRadians(){
-		return Math.acos((1-Math.abs(0.5*Robot.vision.getTargetOffset()/16.65)));  //ArcCos(1-0.5*offset/robot treadwidth)
-	}
-	public double getArclength() {
-		if(Robot.vision.getTargetOffset()>=0.0){
-		return (getRadians()*16.65)*-1;//radians * robot treadwidth
-		}
-		return (getRadians()*16.65);
-	}
-	public double getReqdCounts() {
-		return getCountsPerInch()*getRadians();
+	public double getREncoderInches(){//this method returns something so we define it as double, if void it would not return anything
+		return (getREncoderCount() /(16.38*3.14159)*360);  // =arc length/circumference =arc length/(tread width*PI)*360 degrees
 	}
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new RightOffset(Robot.leftDrive.getLEncoderCount()));
     }
 }
 

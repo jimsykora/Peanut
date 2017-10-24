@@ -9,6 +9,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  *
  */
 public class AutonomousCommand extends CommandGroup {
+	//double offset = 0.0;
+	public static double offset = Robot.vision.getHalfAngleOfOffset();
+	
 	public double distance() {
 		return RobotPreferences.autoDistance();
 	}
@@ -21,9 +24,9 @@ public class AutonomousCommand extends CommandGroup {
 	public double lQEncoderCount() {
 		return Robot.leftDrive.getLEncoderCount();
 	}
-	public double halfAngleOfOffset() {
+	/*public double halfAngleOfOffset() {
 		return Robot.vision.getHalfAngleOfOffset();
-	}
+	}*/
 
     public AutonomousCommand() {
         // Add Commands here:
@@ -43,14 +46,16 @@ public class AutonomousCommand extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	double offset = Robot.vision.getHalfAngleOfOffset();
-    	
+    	//double offset = Robot.vision.getHalfAngleOfOffset();
+    	    	
 //    	addSequential(new DriveDistance(distance()));
 //    	addSequential(new TurnAngle(angle()));
-    	addSequential(new LeftOffset(offset));   //(halfAngleOfOffset()));
-    	addSequential(new RightOffset(offset));   //(halfAngleOfOffset()));
+    	//addSequential(new LeftOffset(offset));   //(halfAngleOfOffset()));
+    	//addSequential(new RightOffset(offset));   //(halfAngleOfOffset()));
     	//addSequential(new DriveCamera(endpoint()));
 //    	addSequential(new DriveDistance(distance()));
 //    	addSequential(new TurnAngle(angle()));
+    	addSequential(new TurnOne(offset/2));
+    	addSequential(new TurnTwo(offset/2));
     }
 }

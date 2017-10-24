@@ -9,28 +9,28 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class LeftOffset extends Command {
-	double arclength = 0.0;
+	double travel = 0.0;
 
     public LeftOffset(double counts) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.leftDrive);
     	requires(Robot.leftDrivePID);
-    	arclength = counts;
+    	travel = counts;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.leftDrive.resetEncoderCount();
-    	Robot.leftDrivePID.setSetpoint(arclength);
+    	Robot.leftDrivePID.setSetpoint(travel);
     	Robot.leftDrivePID.setRawTolerance(RobotPreferences.angleTolerance());
     	Robot.leftDrivePID.enable();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.leftDrivePID.setSetpoint(arclength);
-    	Robot.leftDrive.setAngle(Robot.leftDrivePID.getOutput());
+    	Robot.leftDrivePID.setSetpoint(travel);
+    	Robot.leftDrive.setTravel(Robot.leftDrivePID.getOutput());
     }
 
     // Make this return true when this Command no longer needs to run execute()

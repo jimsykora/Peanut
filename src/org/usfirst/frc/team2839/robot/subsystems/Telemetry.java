@@ -20,7 +20,7 @@ public class Telemetry extends Subsystem {
 	public void update() {
 		SmartDashboard.putNumber("L Encoder Count", Robot.drivetrain.getLEncoderCount());
 		SmartDashboard.putNumber("LD Encoder Count", Robot.leftDrive.getLEncoderCount());
-		SmartDashboard.putNumber("LD Encoder Angle", Robot.leftDrive.getLEncoderAngle());
+		//SmartDashboard.putNumber("LD Encoder Angle", Robot.leftDrive.getLEncoderAngle());
 		SmartDashboard.putNumber("L Encoder Distance", Robot.drivetrain.getLEncoderDistance());
 		SmartDashboard.putNumber("L Encoder Rate", Robot.drivetrain.getLEncoderRate());
 		SmartDashboard.putNumber("L Encoder Angle", Robot.drivetrain.getLEncoderAngle());
@@ -41,14 +41,17 @@ public class Telemetry extends Subsystem {
 		SmartDashboard.putNumber("JetsonAngle", Robot.vision.getTargetAngle());
 		SmartDashboard.putNumber("JetsonDistance", Robot.vision.getTargetDistance());
 		SmartDashboard.putNumber("JetsonOffset", Robot.vision.getTargetOffset());
+		SmartDashboard.putNumber("Offset degrees", Robot.vision.getHalfAngleOfOffset());
+		SmartDashboard.putNumber("Arclength", Robot.vision.getArclength());
+		SmartDashboard.putNumber("Offset counts", Robot.vision.getCounts());
+		SmartDashboard.putNumber("Wheel revs", Robot.vision.getWheelRevs());
+		//SmartDashboard.putNumber("offset", Robot.vision.offset);
 		
 		SmartDashboard.putNumber("Navx vs Encoder Angle", (Robot.navXMicro.getYaw()-Robot.drivetrain.getAvgEncAngle()));
 		SmartDashboard.putNumber("NavX yaw", Robot.navXMicro.getYaw());
 		SmartDashboard.putNumber("NavX pitch", Robot.navXMicro.getPitch());
 		SmartDashboard.putNumber("NavX roll", Robot.navXMicro.getRoll());
-		//SmartDashboard.putNumber("ET", Robot.drivetrainDistancePID.Et.get());
-		//SmartDashboard.putNumber("output, D", Robot.drivetrainDistancePID.output);
-		//SmartDashboard.putNumber("output, A", Robot.drivetrainAnglePID.output);
+
 	}
 
     public void initDefaultCommand() {

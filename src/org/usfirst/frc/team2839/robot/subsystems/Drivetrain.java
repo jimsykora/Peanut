@@ -38,7 +38,7 @@ public class Drivetrain extends Subsystem {
 		Lmotor = new CANTalon(RobotMap.DRIVETRAIN_L_MOTOR);    //for Peanut base
 		Rmotor.enableBrakeMode(true);
 		Lmotor.enableBrakeMode(true);
-		robotDrive = new RobotDrive(Lmotor, Rmotor); // must be in this order,LF,LR, RF, RR
+		robotDrive = new RobotDrive(Lmotor, Rmotor); // must be in this order,LF,LR, RF, RR		
 		robotDrive.setSafetyEnabled(false);  // ignores feedback from motor that it is running under command
 		LQEncoder = new Encoder(RobotMap.L_Q_ENC_CH_A,RobotMap.L_Q_ENC_CH_B);
 		RQEncoder = new Encoder(RobotMap.R_Q_ENC_CH_A,RobotMap.R_Q_ENC_CH_B);
@@ -50,6 +50,11 @@ public class Drivetrain extends Subsystem {
 	
 	public void arcadeDrive(double moveSpeed, double rotateSpeed){ // creates the variable moveSpeed
 		robotDrive.arcadeDrive(moveSpeed, rotateSpeed, true);  // true forces a squared input from joystick
+	}
+	
+	public void setSpeed (double speed) {  //for TurnOne & TurnTwo commands
+		Rmotor.set(speed);
+		Lmotor.set(speed);
 	}
 	
 	public void resetEncoderCount(){

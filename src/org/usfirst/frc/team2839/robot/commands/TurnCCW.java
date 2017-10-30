@@ -7,27 +7,27 @@ import edu.wpi.first.wpilibj.command.TimedCommand;
 /**
  *
  */
-public class TurnTwo extends TimedCommand {
-
-    public TurnTwo(double timeout) {
+public class TurnCCW extends TimedCommand {
+	
+    public TurnCCW(double timeout) {
         super(timeout);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        requires (Robot.leftTurn);
+        requires (Robot.rightTurn);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-   }
+    }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-     Robot.leftTurn.setSpeed(0.7);
+    	Robot.rightTurn.setSpeed(-0.5); //seems to have little/no impact on motor speed
     }
 
     // Called once after timeout
     protected void end() {
-    	Robot.leftTurn.setSpeed(0.0);
+    	Robot.rightTurn.setSpeed(0.0);
     }
 
     // Called when another command which requires one or more of the same

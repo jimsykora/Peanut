@@ -18,7 +18,7 @@ public class Vision extends Subsystem {
 	}
 	public double getTargetOffset() { //this is a method
 		//return 5.2;  //5.2 should result in 1/2 wheel rotation & 50 counts on each side for LeftDrivePID
-		return table.getNumber("Offset", -99.9)*39.37; //vision correction
+		return table.getNumber("Offset", -99.9)*10; //vision correction
 	}
 	public double getTargetAngle() { //this is a method
 		return table.getNumber("Angle", -99.9);

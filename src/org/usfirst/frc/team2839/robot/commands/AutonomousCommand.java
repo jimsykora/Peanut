@@ -55,12 +55,14 @@ public class AutonomousCommand extends CommandGroup {
     	//addSequential(new DriveCamera(endpoint()));
 //    	addSequential(new DriveDistance(distance()));
 //    	addSequential(new TurnAngle(angle()));
+    	
     	if(polarity>=0.0) {						//this is proof of concept; Jetson needs calibrating and angle/time/speed relations need tweaking
-    		addSequential(new TurnOne(offset/2)); 
-    		addSequential(new TurnTwo(offset/2));
+    		addSequential(new TurnCCW(offset/500)); //a 50 degree req'd turn results in 0.1 seconds of motor on time per side
+    		addSequential(new TurnCW(offset/500));
     	}
-    	else {addSequential(new TurnTwo(offset/2));
-    	addSequential(new TurnOne(offset/2));
+    	else {
+    		addSequential(new TurnCW(offset/500));
+    		addSequential(new TurnCCW(offset/500));
     	}
     }
 }

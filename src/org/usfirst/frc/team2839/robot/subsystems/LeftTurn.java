@@ -2,7 +2,7 @@ package org.usfirst.frc.team2839.robot.subsystems;
 
 import org.usfirst.frc.team2839.robot.Robot;
 import org.usfirst.frc.team2839.robot.RobotMap;
-import org.usfirst.frc.team2839.robot.commands.TurnOne;
+import org.usfirst.frc.team2839.robot.commands.TurnCCW;
 
 import com.ctre.CANTalon;
 
@@ -24,13 +24,12 @@ public class LeftTurn extends Subsystem {
 	}
 
 	public void setSpeed(double speed){
-		Lmotor.set(0.4);
+		Lmotor.set(0.63); //tweak this # along with the divisor in autonomous as needed when robot is on carpet
 	}
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	//setDefaultCommand(new TurnOne(0.0));
     }
 }
 

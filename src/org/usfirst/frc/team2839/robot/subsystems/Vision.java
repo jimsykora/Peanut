@@ -8,7 +8,6 @@ import edu.wpi.first.wpilibj.networktables.*;
  *
  */
 public class Vision extends Subsystem {
-	// double offset = 0.0;
 	
 	NetworkTable table;
 	public Vision() {  //this is a constructor & is called only once when the code first runs
@@ -43,16 +42,13 @@ public class Vision extends Subsystem {
 	public double getWheelRevs() {
 		return getCounts()/500;//arclength/counts per wheel revolution
 	}
-	
-	//public static final double offset = Robot.vision.getTargetOffset();  // code won't download when uncommented
-    
+	    
 	// Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	//final double offset = getTargetOffset();
     }
 }
 

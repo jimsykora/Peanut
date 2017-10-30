@@ -9,8 +9,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  *
  */
 public class AutonomousCommand extends CommandGroup {
-	//double offset = 0.0;
-	public static double offset = Robot.vision.getHalfAngleOfOffset();
+	//double offset = 4.0;  //this works as expected
+	//double polarity = -1.0;  //this works as expected
+	public static final double offset = Robot.vision.getHalfAngleOfOffset(); //always a positive angle
+	public static final double polarity = Robot.vision.getTargetOffset(); //either positive or negative number
 	
 	public double distance() {
 		return RobotPreferences.autoDistance();
@@ -45,9 +47,7 @@ public class AutonomousCommand extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	
-    	//double offset = Robot.vision.getHalfAngleOfOffset();
-    	    	
+    	    	    	
 //    	addSequential(new DriveDistance(distance()));
 //    	addSequential(new TurnAngle(angle()));
     	//addSequential(new LeftOffset(offset));   //(halfAngleOfOffset()));
@@ -55,7 +55,12 @@ public class AutonomousCommand extends CommandGroup {
     	//addSequential(new DriveCamera(endpoint()));
 //    	addSequential(new DriveDistance(distance()));
 //    	addSequential(new TurnAngle(angle()));
+    	if(polarity>=0.0) {						//this is proof of concept; Jetson needs calibrating and angle/time/speed relations need tweaking
+    		addSequential(new TurnOne(offset/2)); 
+    		addSequential(new TurnTwo(offset/2));
+    	}
+    	else {addSequential(new TurnTwo(offset/2));
     	addSequential(new TurnOne(offset/2));
-    	addSequential(new TurnTwo(offset/2));
+    	}
     }
 }

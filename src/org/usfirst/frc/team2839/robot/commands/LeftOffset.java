@@ -24,6 +24,7 @@ public class LeftOffset extends Command {
     	Robot.leftDrive.resetEncoderCount();
     	Robot.leftDrivePID.setSetpoint(travel);
     	Robot.leftDrivePID.setRawTolerance(RobotPreferences.angleTolerance());
+    	//Robot.leftDrivePID.setRawTolerance(RobotPreferences.targetCount());
     	Robot.leftDrivePID.enable();
     }
 

@@ -40,12 +40,15 @@ public class RightDrive extends Subsystem {
 	public double getREncoderCount(){//this method returns something so we define it as double, if void it would not return anything
 		return RQEncoder.get(); // to get encoder directions to match
 	}
-	public double getREncoderAngle(){//this method returns something so we define it as double, if void it would not return anything
-		return (getREncoderInches()/360*2*3.14159);
-	}
 	public double getREncoderInches(){//this method returns something so we define it as double, if void it would not return anything
 		return (getREncoderCount() /(16.38*3.14159)*360);  // =arc length/circumference =arc length/(tread width*PI)*360 degrees
 	}
+	public double getREncoderAngle(){//this method returns something so we define it as double, if void it would not return anything
+		return (getREncoderInches()/360*2*3.14159);
+	}
+	//public double getREncoderInches(){//this method returns something so we define it as double, if void it would not return anything
+		//return (getREncoderCount() /(16.38*3.14159)*360);  // =arc length/circumference =arc length/(tread width*PI)*360 degrees
+	//}
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

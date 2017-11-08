@@ -9,16 +9,19 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  *
  */
 public class AutonomousCommand extends CommandGroup {
-	//double offset = 4.0;  //this works as expected
-	//double polarity = -1.0;  //this works as expected
+	//double offset = 5.194;  //this works as expected
+	//double polarity = 1.0;  //this works as expected
+	//double counts = 250;  //this works as expected
+	
 	public static final double offset = Robot.vision.getHalfAngleOfOffset(); //always a positive angle
 	public static final double polarity = Robot.vision.getTargetOffset(); //either positive or negative number
+	public static final double counts = Robot.vision.getCounts(); //counts needed for a half turn
 	
 	public double distance() {
 		return RobotPreferences.autoDistance();
 	}
 	public double angle() {
-		return RobotPreferences.autoAngle();
+		return RobotPreferences.autoAngle(); 
 	}
 	public double endpoint() {
 		return RobotPreferences.autoEndpoint();
@@ -50,12 +53,22 @@ public class AutonomousCommand extends CommandGroup {
     	    	    	
 //    	addSequential(new DriveDistance(distance()));
 //    	addSequential(new TurnAngle(angle()));
+    	//addSequential(new DriveCamera(endpoint()));
     	//addSequential(new LeftOffset(offset));   //(halfAngleOfOffset()));
     	//addSequential(new RightOffset(offset));   //(halfAngleOfOffset()));
-    	//addSequential(new DriveCamera(endpoint()));
-//    	addSequential(new DriveDistance(distance()));
-//    	addSequential(new TurnAngle(angle()));
-    	
+    	///*
+	 		//this is a PID loop approach to correct for the Jetson offset using encoders
+    	if(polarity>=0.0) {						//this is proof of concept; Jetson needs calibrating and angle/time/speed relations need tweaking
+    		addSequential(new RightOffset(counts)); 
+    		addSequential(new LeftOffset(counts));
+    	}
+    	else {
+    		addSequential(new LeftOffset(counts));
+    		addSequential(new RightOffset(counts));
+    	}
+		//*/
+    	/*
+    	 	//this is a timed approach to correct for the Jetson offset
     	if(polarity>=0.0) {						//this is proof of concept; Jetson needs calibrating and angle/time/speed relations need tweaking
     		addSequential(new TurnCCW(offset/500)); //a 50 degree req'd turn results in 0.1 seconds of motor on time per side
     		addSequential(new TurnCW(offset/500));
@@ -64,5 +77,6 @@ public class AutonomousCommand extends CommandGroup {
     		addSequential(new TurnCW(offset/500));
     		addSequential(new TurnCCW(offset/500));
     	}
+    	*/
     }
 }

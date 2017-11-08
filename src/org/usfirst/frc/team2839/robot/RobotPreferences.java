@@ -25,13 +25,13 @@ public class RobotPreferences {
 	
 	//for angle PID
 	public static double angleP() {
-		return Preferences.getInstance().getDouble("angleP", 0.02);  //add to subsystem PID: "enable method"
+		return Preferences.getInstance().getDouble("angleP", 0.005);  //add to subsystem PID: "enable method"
 	}
 	public static double angleI() {
 		return Preferences.getInstance().getDouble("angleI", 0.0);
 	}
 	public static double angleD() {
-		return Preferences.getInstance().getDouble("angleD", 0.005);
+		return Preferences.getInstance().getDouble("angleD", 0.003);
 	}
 	public static double angleF() {
 		return Preferences.getInstance().getDouble("angleF", 0.0);
@@ -40,12 +40,12 @@ public class RobotPreferences {
 		return Preferences.getInstance().getDouble("angleMaxSpeed", 0.5);
 	}
 	public static double angleTolerance() {
-		return Preferences.getInstance().getDouble("angleTolerance", 4.0);
+		return Preferences.getInstance().getDouble("angleTolerance", 5.0);
 	}
 	
 	
 	public static int targetCount() {
-		return Preferences.getInstance().getInt("targetCount", 1);
+		return Preferences.getInstance().getInt("targetCount", 5);
 	}
 	
 	//auto

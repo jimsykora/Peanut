@@ -18,7 +18,7 @@ public class Vision extends Subsystem {
 	}
 	public double getTargetOffset() { //this is a method
 		//return 5.2;  //5.2 should result in 1/2 wheel rotation & 50 counts on each side for LeftDrivePID
-		return table.getNumber("Offset", -99.9)*10; //vision correction
+		return table.getNumber("Offset", -99.9)*10; //*vision correction----Jetson needs calibration
 	}
 	public double getTargetAngle() { //this is a method
 		return table.getNumber("Angle", -99.9);
@@ -30,9 +30,6 @@ public class Vision extends Subsystem {
 		}
 		return  Math.acos(1-(0.5*getTargetOffset()*-1.0/16.65))*360/2/3.14159;  //ArcCos(1-0.5*offset/robot treadwidth)
 	}
-	/*public double getRadians(){
-		return Math.acos((1-Math.abs(0.5*getTargetOffset()/16.65)));  //ArcCos(1-0.5*offset/robot treadwidth)
-	}*/
 	public double getArclength() {
 		return getHalfAngleOfOffset()*16.65*2*3.14159/360;
 	}

@@ -39,16 +39,19 @@ public class LeftDrive extends Subsystem {
 	}
 	public double getLEncoderCount(){//this method returns something so we define it as double, if void it would not return anything
 		return LQEncoder.get()*-1; // to get encoder directions to match
-	}	
-	/*public double getLEncoderAngle(){//this method returns something so we define it as double, if void it would not return anything
-		return (getLEncoderInches()/360*2*3.14159);
 	}
 	public double getLEncoderInches(){//this method returns something so we define it as double, if void it would not return anything
 		return (getLEncoderCount() /(16.65*3.14159)*360);  // =arc length/circumference =arc length/(tread width*PI)*360 degrees
-	}*/
+	}
+	public double getLEncoderAngle(){//this method returns something so we define it as double, if void it would not return anything
+		return (getLEncoderInches()/360*2*3.14159);
+	}
+	//public double getLEncoderInches(){//this method returns something so we define it as double, if void it would not return anything
+		//return (getLEncoderCount() /(16.65*3.14159)*360);  // =arc length/circumference =arc length/(tread width*PI)*360 degrees
+	//}
 	
     public void initDefaultCommand() {
-    	double counts = 0;
+    	//double counts = 0;
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     	//setDefaultCommand(new LeftOffset(counts)); //commented out to help DRiveArcade & LeftTurn subsystem

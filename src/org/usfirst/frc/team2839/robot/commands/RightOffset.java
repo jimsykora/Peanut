@@ -22,6 +22,7 @@ public class RightOffset extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.rightDrive.resetEncoderCount();
+    	//double travel = Robot.vision.getCounts();  
     	Robot.rightDrivePID.setSetpoint(travel);
     	Robot.rightDrivePID.setRawTolerance(RobotPreferences.angleTolerance());
     	//Robot.rightDrivePID.setRawTolerance(RobotPreferences.targetCount());

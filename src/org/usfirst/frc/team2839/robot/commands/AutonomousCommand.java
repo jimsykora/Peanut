@@ -2,6 +2,7 @@ package org.usfirst.frc.team2839.robot.commands;
 
 import org.usfirst.frc.team2839.robot.Robot;
 import org.usfirst.frc.team2839.robot.RobotPreferences;
+import org.usfirst.frc.team2839.robot.subsystems.Vision;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -13,9 +14,9 @@ public class AutonomousCommand extends CommandGroup {
 	//double polarity = 1.0;  //this works as expected
 	//double counts = 250;  //this works as expected
 	
-	public static final double offset = Robot.vision.getHalfAngleOfOffset(); //always a positive angle
-	public static final double polarity = Robot.vision.getTargetOffset(); //either positive or negative number
-	public static final double counts = Robot.vision.getCounts(); //counts needed for a half turn
+	public static double offset = Robot.vision.getHalfAngleOfOffset(); //always a positive angle
+	public static double polarity = Robot.vision.getTargetOffset(); //either positive or negative number
+	public static double counts = Robot.vision.getCounts(); //counts needed for half of an "S" turn
 	
 	public double distance() {
 		return RobotPreferences.autoDistance();
@@ -29,8 +30,8 @@ public class AutonomousCommand extends CommandGroup {
 	public double lQEncoderCount() {
 		return Robot.leftDrive.getLEncoderCount();
 	}
-	/*public double halfAngleOfOffset() {
-		return Robot.vision.getHalfAngleOfOffset();
+	/*public static double counts() {
+		return Robot.vision.getCounts();
 	}*/
 
     public AutonomousCommand() {
@@ -44,29 +45,31 @@ public class AutonomousCommand extends CommandGroup {
         // e.g. addParallel(new Command1());
         //      addSequential(new Command2());
         // Command1 and Command2 will run in parallel.
-
-        // A command group will require all of the subsystems that each member
-        // would require.
-        // e.g. if Command1 requires chassis, and Command2 requires arm,
-        // a CommandGroup containing them would require both the chassis and the
-        // arm.
     	    	    	
 //    	addSequential(new DriveDistance(distance()));
 //    	addSequential(new TurnAngle(angle()));
     	//addSequential(new DriveCamera(endpoint()));
     	//addSequential(new LeftOffset(offset));   //(halfAngleOfOffset()));
     	//addSequential(new RightOffset(offset));   //(halfAngleOfOffset()));
-    	///*
-	 		//this is a PID loop approach to correct for the Jetson offset using encoders
+    	//
+	 		//this is a PID loop approach to correct for the Jetson offset using encoders    	
     	if(polarity>=0.0) {						//this is proof of concept; Jetson needs calibrating and angle/time/speed relations need tweaking
-    		addSequential(new RightOffset(counts)); 
-    		addSequential(new LeftOffset(counts));
+    		addSequential(new RightOffset(counts*10)); 
+    		addSequential(new LeftOffset(counts*10));
     	}
     	else {
-    		addSequential(new LeftOffset(counts));
-    		addSequential(new RightOffset(counts));
+    		addSequential(new LeftOffset(counts*10));
+    		addSequential(new RightOffset(counts*10));
     	}
-		//*/
+    	 double counts = Robot.vision.getCounts();	//need to capture & store new Jetson info now after motion for use by the following
+    	if(polarity>=0.0) {						//this is proof of concept; Jetson needs calibrating and angle/time/speed relations need tweaking
+    		addSequential(new RightOffset(counts*5)); 
+    		addSequential(new LeftOffset(counts*5));
+    	}
+    	else {
+    		addSequential(new LeftOffset(counts*5));
+    		addSequential(new RightOffset(counts*5));
+    	}
     	/*
     	 	//this is a timed approach to correct for the Jetson offset
     	if(polarity>=0.0) {						//this is proof of concept; Jetson needs calibrating and angle/time/speed relations need tweaking

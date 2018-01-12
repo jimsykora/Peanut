@@ -41,7 +41,7 @@ public class RightDrivePID extends PIDSubsystem {
         // e.g. a sensor, like a potentiometer:
         // yourPot.getAverageVoltage() / kYourMaxVoltage;
     	//return Robot.rightDrive.getREncoderAngle();
-        return Robot.rightDrive.getREncoderCount();
+        return Robot.drivetrain.getREncoderCount();
     }
 
     protected void usePIDOutput(double output) {
@@ -63,7 +63,7 @@ public class RightDrivePID extends PIDSubsystem {
     }
     public boolean onRawTargrt() {
     	//if(Math.abs(getPIDController().getSetpoint() - Robot.rightDrive.getREncoderAngle()) < tolerance) {
-    	if(Math.abs(getPIDController().getSetpoint() - Robot.rightDrive.getREncoderCount()) < tolerance) {
+    	if(Math.abs(getPIDController().getSetpoint() - Robot.drivetrain.getREncoderCount()) < tolerance) {
     		targetCounter = targetCounter +1;
     	}
     	else {

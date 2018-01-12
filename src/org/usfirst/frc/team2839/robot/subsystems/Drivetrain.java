@@ -54,12 +54,28 @@ public class Drivetrain extends Subsystem {
 	
 	public void setSpeed (double speed) {  //for TurnOne & TurnTwo commands
 		Rmotor.set(speed);
+		Lmotor.set(speed); //TODO maybe invert
+	}
+	
+	public void setLTravel (double speed) {
 		Lmotor.set(speed);
+	}
+	
+	public void setRTravel (double speed) {
+		Rmotor.set(-speed);
 	}
 	
 	public void resetEncoderCount(){
 		LQEncoder.reset();
 		RQEncoder.reset();
+	}
+	
+	public void resetREncoderCount(){
+		RQEncoder.reset();
+	}
+	
+	public void resetLEncoderCount(){
+		LQEncoder.reset();
 	}
 
 	public double getLEncoderCount(){//this method returns something so we define it as double, if void it would not return anything
@@ -104,6 +120,21 @@ public class Drivetrain extends Subsystem {
 	}	
 	public double getUSSensorVoltage(){//this method returns something so we define it as double, if void it would not return anything
 		return USSensor.getAverageVoltage();
+	}
+	
+	// OFFESET PID
+	public double getREncoderInchesOffset(){//this method returns something so we define it as double, if void it would not return anything
+		return (getREncoderCount() /(16.38*3.14159)*360);  // =arc length/circumference =arc length/(tread width*PI)*360 degrees
+	}
+	public double getREncoderAngleOffset(){//this method returns something so we define it as double, if void it would not return anything
+		return (getREncoderInchesOffset()/360*2*3.14159);
+	}
+	
+	public double getLEncoderInchesOffset(){//this method returns something so we define it as double, if void it would not return anything
+		return (getLEncoderCount() /(16.65*3.14159)*360);  // =arc length/circumference =arc length/(tread width*PI)*360 degrees
+	}
+	public double getLEncoderAngleOffset(){//this method returns something so we define it as double, if void it would not return anything
+		return (getLEncoderInchesOffset()/360*2*3.14159);
 	}
 
     public void initDefaultCommand() {

@@ -41,7 +41,7 @@ public class LeftDrivePID extends PIDSubsystem {
         // e.g. a sensor, like a potentiometer:
         // yourPot.getAverageVoltage() / kYourMaxVoltage;
     	//return Robot.leftDrive.getLEncoderAngle();
-        return Robot.leftDrive.getLEncoderCount();
+        return Robot.drivetrain.getLEncoderCount();
     }
 
     protected void usePIDOutput(double output) {
@@ -63,7 +63,7 @@ public class LeftDrivePID extends PIDSubsystem {
     }
     public boolean onRawTargrt() {
     	//if(Math.abs(getPIDController().getSetpoint() - Robot.leftDrive.getLEncoderAngle()) < tolerance) {
-    	if(Math.abs(getPIDController().getSetpoint() - Robot.leftDrive.getLEncoderCount()) < tolerance) {
+    	if(Math.abs(getPIDController().getSetpoint() - Robot.drivetrain.getLEncoderCount()) < tolerance) {
     		targetCounter = targetCounter +1;
     	}
     	else {

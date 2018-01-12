@@ -14,7 +14,7 @@ public class Vision extends Subsystem {
 		table = NetworkTable.getTable("NURDVision");
 	}
 	public double getTargetDistance() { //distance from Jetson to center of two vertical, reflective targets
-		return table.getNumber("Distance", -99.9);
+		return table.getNumber("Distance", -99.9)*36/25;
 	}
 	public double getTargetOffset() { //eft/right distance between camera center and center of two vertical, reflective targets
 		//return 5.2;  //5.2 should result in 1/2 wheel rotation & 50 counts on each side for LeftDrivePID

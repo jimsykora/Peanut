@@ -14,14 +14,14 @@ public class LeftOffset extends Command {
     public LeftOffset(double counts) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.leftDrive);
+    	requires(Robot.drivetrain);
     	requires(Robot.leftDrivePID);
     	travel = counts;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.leftDrive.resetEncoderCount();
+    	Robot.drivetrain.resetLEncoderCount();
     	//double travel = Robot.vision.getCounts();  
     	Robot.leftDrivePID.setSetpoint(travel);
     	Robot.leftDrivePID.setRawTolerance(RobotPreferences.angleTolerance());
@@ -32,7 +32,7 @@ public class LeftOffset extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.leftDrivePID.setSetpoint(travel);
-    	Robot.leftDrive.setTravel(Robot.leftDrivePID.getOutput());
+    	Robot.drivetrain.setLTravel(Robot.leftDrivePID.getOutput());
     }
 
     // Make this return true when this Command no longer needs to run execute()

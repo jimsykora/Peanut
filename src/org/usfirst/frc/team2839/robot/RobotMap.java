@@ -19,15 +19,15 @@ public class RobotMap {
 	public static final int CAMERA_HORIZONTAL_SERVO = 9;
 	
 	//Digital Inputs (DIO)-avoid duplicate values
-	public static final int L_Q_ENC_CH_A_OFFSET = 0;//workaround two encoders used by Drivetrain, LeftDrive & RightDrive in ports 0-3
-	public static final int L_Q_ENC_CH_B_OFFSET = 1;//workaround two encoders used by Drivetrain, LeftDrive & RightDrive in ports 0-3
-	public static final int R_Q_ENC_CH_A_OFFSET = 2;//workaround two encoders used by Drivetrain, LeftDrive & RightDrive in ports 0-3
-	public static final int R_Q_ENC_CH_B_OFFSET = 3;//workaround two encoders used by Drivetrain, LeftDrive & RightDrive in ports 0-3
+	public static final int L_Q_ENC_CH_A = 0;//workaround two encoders used by Drivetrain, LeftDrive & RightDrive in ports 0-3
+	public static final int L_Q_ENC_CH_B = 1;//workaround two encoders used by Drivetrain, LeftDrive & RightDrive in ports 0-3
+	public static final int R_Q_ENC_CH_A = 2;//workaround two encoders used by Drivetrain, LeftDrive & RightDrive in ports 0-3
+	public static final int R_Q_ENC_CH_B = 3;//workaround two encoders used by Drivetrain, LeftDrive & RightDrive in ports 0-3
 	
-	public static final int L_Q_ENC_CH_A = 4;//workaround two encoders used by Drivetrain, LeftDrive & RightDrive in ports 0-3
-	public static final int L_Q_ENC_CH_B = 5;//workaround two encoders used by Drivetrain, LeftDrive & RightDrive in ports 0-3
-	public static final int R_Q_ENC_CH_A = 6;//workaround two encoders used by Drivetrain, LeftDrive & RightDrive in ports 0-3
-	public static final int R_Q_ENC_CH_B = 7;//workaround two encoders used by Drivetrain, LeftDrive & RightDrive in ports 0-3
+//	public static final int L_Q_ENC_CH_A = 4;//workaround two encoders used by Drivetrain, LeftDrive & RightDrive in ports 0-3
+//	public static final int L_Q_ENC_CH_B = 5;//workaround two encoders used by Drivetrain, LeftDrive & RightDrive in ports 0-3
+//	public static final int R_Q_ENC_CH_A = 6;//workaround two encoders used by Drivetrain, LeftDrive & RightDrive in ports 0-3
+//	public static final int R_Q_ENC_CH_B = 7;//workaround two encoders used by Drivetrain, LeftDrive & RightDrive in ports 0-3
 	
 	//joystick
 	public static final int OI_JOYSTICK = 2;

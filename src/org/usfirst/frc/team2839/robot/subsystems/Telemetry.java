@@ -40,10 +40,17 @@ public class Telemetry extends Subsystem {
 		SmartDashboard.putNumber("JetsonDistance", Robot.vision.getTargetDistance());
 		SmartDashboard.putNumber("JetsonOffset", Robot.vision.getTargetOffset());
 		SmartDashboard.putNumber("Offset degrees", Robot.vision.getHalfAngleOfOffset());
-		SmartDashboard.putNumber("Arclength", Robot.vision.getArclength());
-		SmartDashboard.putNumber("Offset counts", Robot.vision.getCounts());
-		SmartDashboard.putNumber("Wheel revs", Robot.vision.getWheelRevs());
-		SmartDashboard.putNumber("Long distance halfangle", Robot.vision.getAngleCorrectionHalfDistance());
+		SmartDashboard.putNumber("Offset arclength", Robot.vision.getArclengthOffset());
+		SmartDashboard.putNumber("Offset counts", Robot.vision.getCountsOffset());
+		SmartDashboard.putNumber("Offset wheel revs", Robot.vision.getWheelRevsOffset());
+		SmartDashboard.putNumber("Angle degrees", Robot.vision.getHalfAngleOfTheta());
+		SmartDashboard.putNumber("Angle arclength", Robot.vision.getArclengthAngle());
+		SmartDashboard.putNumber("Angle counts", Robot.vision.getCountsAngle());
+		SmartDashboard.putNumber("Angle wheel revs", Robot.vision.getWheelRevsAngle());
+		SmartDashboard.putNumber("Total counts", Robot.vision.getTotalCounts());
+		SmartDashboard.putNumber("Total counts wheel revs", Robot.vision.getWheelRevsTotalCounts());
+		SmartDashboard.putNumber("Angle correction only counts", Robot.vision.getAngleCorrectionOnlyCounts());
+		SmartDashboard.putNumber("Angle correction only wheel revs", Robot.vision.getAngleCorrectionOnlyWheelRevs());
 
 		SmartDashboard.putNumber("Navx vs Encoder Angle", (Robot.navXMicro.getYaw()-Robot.drivetrain.getAvgEncAngle()));
 		SmartDashboard.putNumber("NavX yaw", Robot.navXMicro.getYaw());

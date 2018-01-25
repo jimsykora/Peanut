@@ -17,6 +17,7 @@ public class AutonomousCommand extends CommandGroup {
 	public static double offset = Robot.vision.getHalfAngleOfOffset(); //always a positive angle
 	public static double polarity = 0;
 	public static double counts = 0;
+	public static double countsAngle = 0;
 	
 	public double distance() {
 		return RobotPreferences.autoDistance();
@@ -53,6 +54,7 @@ public class AutonomousCommand extends CommandGroup {
     	//addSequential(new RightOffset(offset));   //(halfAngleOfOffset()));
     	//
     	
+    	
 /* 		//this is a PID loop approach to correct for the Jetson offset using encoders   
     	counts = Robot.vision.getCounts();	//need to capture & store new Jetson info now after motion for use by the following
     	polarity = Robot.vision.getTargetOffset(); //either positive or negative number
@@ -64,7 +66,9 @@ public class AutonomousCommand extends CommandGroup {
     		addSequential(new LeftOffset(counts*1));
     		addSequential(new RightOffset(counts*1));
     	}
-*/    	
+*/  
+    	
+/*
  		//this is a PID loop approach to correct for the Jetson angle using encoders 
     	counts = Robot.vision.getCountsAngle();	//need to capture & store new Jetson info now after motion for use by the following
     	polarity = Robot.vision.getTargetAngle(); //either positive or negative number
@@ -76,15 +80,33 @@ public class AutonomousCommand extends CommandGroup {
     		addSequential(new LeftOffset(counts*1));
     		addSequential(new RightOffset(counts*1));
     	}
+*/
     	
-    	counts = Robot.vision.getCountsAngle();	//need to capture & store new Jetson info now after motion for use by the following
-    	polarity = Robot.vision.getTargetAngle(); //either positive or negative number
-    	if(polarity>=0.0) {						//this is proof of concept; Jetson needs calibrating and angle/time/speed relations need tweaking
-    		addSequential(new LeftOffset(counts*1));  //multiplier is to amplify error for debug/test purposes only
+    	
+    	//this is a PID loop approach to correct for both the Jetson angle & offset using encoders 
+    	counts = Robot.vision.getTotalCounts();	//need to capture & store new Jetson info now after motion for use by the following
+    	countsAngle = Robot.vision.getAngleCorrectionOnlyCounts();
+    	if(counts>=0.0) {						//this is proof of concept; Jetson needs calibrating and angle/time/speed relations need tweaking
+    		addSequential(new RightOffset(counts*1));  //multiplier is to amplify error for debug/test purposes only
+    		addSequential(new LeftOffset(counts*1));
     	}
     	else {
-    		addSequential(new RightOffset(counts*1));
+    		addSequential(new LeftOffset(counts*-1*1));
+    		addSequential(new RightOffset(counts*-1*1));
     	}
+    	
+    	
+    	//counts = Robot.vision.getCountsAngle();	//need to capture & store new Jetson info now after motion for use by the following
+    	polarity = Robot.vision.getTargetAngle(); //either positive or negative number
+    	if(polarity>=0.0) {						//this is proof of concept; Jetson needs calibrating and angle/time/speed relations need tweaking
+    		addSequential(new LeftOffset(countsAngle*1));  //multiplier is to amplify error for debug/test purposes only
+    	}
+    	else {
+    		addSequential(new RightOffset(countsAngle*1));
+    	}
+    	
+    	
+    	
     	/*
     	 	//this is a timed approach to correct for the Jetson offset
     	if(polarity>=0.0) {						//this is proof of concept; Jetson needs calibrating and angle/time/speed relations need tweaking

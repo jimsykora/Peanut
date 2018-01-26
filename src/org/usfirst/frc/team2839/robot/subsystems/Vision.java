@@ -26,7 +26,7 @@ public class Vision extends Subsystem {
 	
 	public double getHalfAngleOfOffset() {  //angle, in degrees, needed for a single drive wheel to make 1/2 of an "S" turn
 		//if(getTargetOffset()>=0.0){
-		return  Math.acos(1-(0.5*getTargetOffset()/16.65))*360/2/3.14159;  //ArcCos(1-0.5*offset/robot treadwidth)
+		return  Math.acos(1-(0.5*getTargetOffset()/16.65))*57.3;  //ArcCos(1-0.5*offset/robot treadwidth)*degrees/radian
 		//}
 		//return  Math.acos(1-(0.5*getTargetOffset()*-1.0/16.65))*360/2/3.14159;  //ArcCos(1-0.5*offset/robot treadwidth)
 	}
@@ -43,9 +43,9 @@ public class Vision extends Subsystem {
 
 	public double getHalfAngleOfTheta() {  //angle, in degrees, needed for a single drive wheel to make 1/2 of an "S" turn
 		//if(getTargetAngle()>=0.0){
-		return  getTargetDistance()*(Math.sin(getTargetAngle()))*0.5;  //distance needed to make 1/2 of an "S" curve correction for camera to target angle
+		return getTargetDistance()*Math.sin(getTargetAngle()/57.3)*0.5; //distance needed to make 1/2 of an "S" curve correction for camera to target angle (57.3 degrees/radian)
 		//}
-		//return  getTargetDistance()*Math.sin(getTargetAngle()*-0.5);  //distance needed to make 1/2 of an "S" curve correction for camera to target angle
+		//return  getTargetDistance()*Math.sin(getTargetAngle()/57.3)*-0.5);  //distance needed to make 1/2 of an "S" curve correction for camera to target angle
 	}
 	public double getArclengthAngle() {  //arclength needed to eliminate angle between jetson and target
 		return getHalfAngleOfTheta()*16.65*2*3.14159/360; //treadwidth*2*PI/360
@@ -69,10 +69,10 @@ public class Vision extends Subsystem {
 	
 	public double getAngleCorrectionOnlyCounts() {  //counts needed to eliminate only angle to target, does not address offset
 		if(getTargetAngle()>=0.0){
-		return  getTargetAngle()*16.65*(2/360)/6*500;  //(angle*treadwidth*(2/360)/wheel dia)*counts per revolution
+		return getTargetAngle()*16.65*2/360/6*500;  //(angle*treadwidth*(2/360)/wheel dia)*counts per revolution
 		}
-		return  getTargetAngle()*16.65*(2/360)/6*500*-1;  //*-1 to always get positive # of counts
-	}
+		return  getTargetAngle()*16.65*2/360/6*500*-1;  //*-1 to always get positive # of counts
+		}
 	public double getAngleCorrectionOnlyWheelRevs() {
 		return  getAngleCorrectionOnlyCounts()/500;  //counts/counts per revolution
 		}

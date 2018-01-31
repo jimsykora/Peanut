@@ -86,6 +86,7 @@ public class AutonomousCommand extends CommandGroup {
     	//this is a PID loop approach to correct for both the Jetson angle & offset using encoders 
     	counts = Robot.vision.getTotalCounts();	//need to capture & store new Jetson info now after motion for use by the following
     	countsAngle = Robot.vision.getAngleCorrectionOnlyCounts();
+    	polarity = Robot.vision.getTargetAngle(); //either positive or negative number
     	if(counts>=0.0) {						//this is proof of concept; Jetson needs calibrating and angle/time/speed relations need tweaking
     		addSequential(new RightOffset(counts*1));  //multiplier is to amplify error for debug/test purposes only
     		addSequential(new LeftOffset(counts*1));
@@ -95,9 +96,8 @@ public class AutonomousCommand extends CommandGroup {
     		addSequential(new RightOffset(counts*-1*1));
     	}
     	
-    	
-    	//counts = Robot.vision.getCountsAngle();	//need to capture & store new Jetson info now after motion for use by the following
-    	polarity = Robot.vision.getTargetAngle(); //either positive or negative number
+   	
+//    		countsAngle = Robot.vision.getCountsAngle();	//need to capture & store new Jetson info now after motion for use by the following
     	if(polarity>=0.0) {						//this is proof of concept; Jetson needs calibrating and angle/time/speed relations need tweaking
     		addSequential(new LeftOffset(countsAngle*1));  //multiplier is to amplify error for debug/test purposes only
     	}

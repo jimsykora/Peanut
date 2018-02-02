@@ -14,7 +14,7 @@ public class Vision extends Subsystem {
 		table = NetworkTable.getTable("NURDVision");
 	}
 	public double getTargetDistance() { //distance from Jetson to center of two vertical, reflective targets
-		return (table.getNumber("Distance", -99.9))*1.4  *0.0  +46.6; //-.04; //multiplier & adder are to get slope & intercept correct (Jetson needs calibration)
+		return (table.getNumber("Distance", -99.9))*1.4 -.04; //multiplier & adder are to get slope & intercept correct (Jetson needs calibration)
 	}
 	public double getTargetOffset() { //left/right distance between camera center and center of two vertical, reflective targets
 		return (table.getNumber("Offset", -99.9))*21.7  +0.4; //multiplier & adder are to get slope & intercept correct (Jetson needs calibration)
@@ -26,9 +26,9 @@ public class Vision extends Subsystem {
 	
 	public double getHalfAngleOfOffset() {  //always positive angle, in degrees, needed for a single drive wheel to make 1/2 of an "S" turn
 		if(getTargetOffset()>=0.0)  //may be plus or minus
-			return (Math.acos(1-(0.5*getTargetOffset()/16.65)))*57.3;  //ArcCos(1-0.5*offset/robot treadwidth)*degrees/radian
+			return (Math.acos(1-(0.5*getTargetOffset()/(16.65/2))))*57.3;  //ArcCos(1-0.5*offset/robot treadwidth)*degrees/radian
 		else
-			return  (Math.acos(1+(0.5*getTargetOffset()/16.65)))*57.3;  //ArcCos(1-0.5*offset/robot treadwidth)*degrees/radian
+			return  (Math.acos(1+(0.5*getTargetOffset()/(16.65/2))))*57.3;  //ArcCos(1-0.5*offset/robot treadwidth)*degrees/radian
 	}
 	public double getArclengthOffset() {  //arclength of 1/2 of an "S" turn, always positive
 		return getHalfAngleOfOffset()*16.65/57.3; //treadwidth*degrees/radian
@@ -49,9 +49,9 @@ public class Vision extends Subsystem {
 	}
 	public double getHalfAngleOfTheta() {   //always positive angle, in degrees, needed for a single drive wheel to make 1/2 of an "S" turn
 		if(getTargetAngle()>=0.0)
-			return (Math.acos(1-(0.5*getEquivalentAngleOffset()/16.65)))*57.3;  //ArcCos(1-0.5*offset/robot treadwidth)*degrees/radian
+			return (Math.acos(1-(0.5*getEquivalentAngleOffset()/(16.65/2))))*57.3;  //ArcCos(1-0.5*offset/robot treadwidth)*degrees/radian
 		else 
-			return (Math.acos(1+(0.5*getEquivalentAngleOffset()/16.65)))*57.3;  //ArcCos(1-0.5*offset/robot treadwidth)*degrees/radian
+			return (Math.acos(1+(0.5*getEquivalentAngleOffset()/(16.65/2))))*57.3;  //ArcCos(1-0.5*offset/robot treadwidth)*degrees/radian
 	}
 	public double getArclengthAngle() {  //arclength of 1/2 of an "S" turn, always positive
 		return getHalfAngleOfTheta()*16.65/57.3; //treadwidth*degrees/radian

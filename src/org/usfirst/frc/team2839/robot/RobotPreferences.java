@@ -40,12 +40,12 @@ public class RobotPreferences {
 		return Preferences.getInstance().getDouble("angleMaxSpeed", 0.5);
 	}
 	public static double angleTolerance() {
-		return Preferences.getInstance().getDouble("angleTolerance", 5.0);
+		return Preferences.getInstance().getDouble("angleTolerance", 4.0);
 	}
 	
 	
 	public static int targetCount() {
-		return Preferences.getInstance().getInt("targetCount", 5);
+		return Preferences.getInstance().getInt("targetCount", 1);
 	}
 	
 	//auto

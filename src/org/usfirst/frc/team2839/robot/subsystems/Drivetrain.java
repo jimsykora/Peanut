@@ -49,7 +49,7 @@ public class Drivetrain extends Subsystem {
 	}
 	
 	public void arcadeDrive(double moveSpeed, double rotateSpeed){ // creates the variable moveSpeed
-		robotDrive.arcadeDrive(moveSpeed, rotateSpeed, true);  // true forces a squared input from joystick
+		robotDrive.arcadeDrive(moveSpeed, rotateSpeed, false);  // default is true & forces a squared input from joystick, this can mess up PID control however
 	}
 	
 	public void setSpeed (double speed) {  //for TurnOne & TurnTwo commands

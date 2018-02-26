@@ -82,12 +82,22 @@ public class AutonomousCommand extends CommandGroup {
     		addSequential(new RightOffset(counts*1));
     	}
 */
-    	//drive straight for 1/2 wheel rev
+    	//drive straight for 1/2 wheel rev (250 counts), 90 deg turn = 694 counts, 180 deg turn = 1388 counts, 7.71 counts/degree
     	//addParallel(new LeftOffset(250));
     	//addSequential(new LeftOffset(250));
-    	//addParallel(new RightOffset(250));
-    	addSequential(new RightOffset(250));
-    	addParallel(new LeftOffset(250));
+    	addSequential(new LeftOffset(500));
+    	addSequential(new RightOffset(500));
+    	addSequential(new RightOffset(1388+80));
+    	addSequential(new LeftOffset(515));
+    	addSequential(new RightOffset(515));
+    	addSequential(new RightOffset(1388+100));
+    	addSequential(new LeftOffset(65));
+    	addSequential(new RightOffset(65));
+    	
+    	//addParallel(new RightOffset(1000));
+    	//addParallel(new VariousMoves());
+    	//addSequential(new RightOffset(500));
+    	//addParallel(new LeftOffset(500));
     	//addParallel(new RightOffset(250));
     	
    /*
